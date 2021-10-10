@@ -6,6 +6,7 @@ import { getAuthURL } from './auth/spotifyAuth';
 
 
 import './App.css';
+import Dash from './components/Dash';
 
 function App() {
   const authURL = getAuthURL();
@@ -31,13 +32,13 @@ function App() {
 
   return (
     <div className="App">
-      <a href={authURL}>Authorise Spotify</a>
-      {/* <p>{code ? code  : 'No code'}</p> */}
+      {access_token &&  <Dash />}
+      {!access_token && <a href={authURL}>Authorise Spotify</a>}
     </div>
   );
 }
 
-export const searchCode = (name : string, url = '') => {
+const searchCode = (name : string, url = '') => {
   const results = new RegExp("[#&]" + name + "=([^&#]*)").exec(
     url || window.location.href
   );
