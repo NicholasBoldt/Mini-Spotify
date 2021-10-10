@@ -4,6 +4,7 @@ import { getAuthURL } from './auth/spotifyAuth';
 
 
 
+
 import './App.css';
 
 function App() {
@@ -16,10 +17,17 @@ function App() {
   const expires_in = searchCode('expires_in', responseURL)
   const state = searchCode('state', responseURL)
 
-  console.log(access_token)
-  console.log(token_type)
-  console.log(expires_in)
-  console.log(state)
+  const token = {
+    access_token,
+    token_type,
+    expires_in,
+    state,
+  }
+
+  console.log(token.access_token)
+  console.log(token.token_type)
+  console.log(token.expires_in)
+  console.log(token.state)
 
   return (
     <div className="App">

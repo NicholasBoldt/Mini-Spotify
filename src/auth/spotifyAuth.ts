@@ -12,12 +12,12 @@ const authURL = "https://accounts.spotify.com/authorize";
 const redirectURL = "http://localhost:3000"; 
 const scopes = ["playlist-read-private", "playlist-modify-private", "user-read-recently-played"];
 
-export type SpotifyToken = {
-  access_token: string;
-  token_type: string;
-  expires_in: number;
-  state: string;
-};
+// export type SpotifyToken = {
+//   access_token: string;
+//   token_type: string;
+//   expires_in: number;
+//   state: string;
+// };
 
 /**
  * Get auth URL
