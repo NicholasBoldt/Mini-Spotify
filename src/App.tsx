@@ -4,6 +4,7 @@ import Dash from './components/Dash';
 import { getPlaylists, getTracks } from './utiles/spotifyAPI';
 import classes from './App.module.css';
 import PlaylistForm from './components/PlaylistForm';
+import TrackList from './components/TrackList';
 
 function App() {
   const [playlists, setPlaylists] = useState([] as any[]);
@@ -76,10 +77,7 @@ function App() {
       {/* {access_token && <Dash />} */}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
       {access_token && <PlaylistForm playlists={playlists} onSubmit={changePlaylistHandler}/> }
-      <div>{tracks && tracks.map((track) => (
-         <li key={track.track.id}>{track.track.name}</li>
-     
-  ))}</div>
+      {tracks && <TrackList tracks={tracks} />}
     </div>
   );
 }

@@ -1,9 +1,9 @@
+import classes from "./PlaylistForm.module.css";
 
 
 
-interface Playlists {
+interface PlaylistForm {
     playlists: any[]
-
     onSubmit: any
 }
 
@@ -12,7 +12,7 @@ interface Playlists {
 
 
 
-const PlaylistForm = (props:Playlists) => {
+const PlaylistForm = (props:PlaylistForm) => {
     const handleChange = (event: any) => {
         props.onSubmit(event.target.value);
     }
