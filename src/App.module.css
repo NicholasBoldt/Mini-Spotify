@@ -1,0 +1,14 @@
+.app {
+  text-align: center;
+}
+
+.authorize {
+  text-decoration: none;
+  background-color: #1DB954;
+  color: white;
+  border-radius: 500px;
+  padding: 14px 32px;
+  line-height: 20px;
+  font-weight: 700;
+  -webkit-tap-highlight-color: transparent;
+}
