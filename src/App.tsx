@@ -3,9 +3,11 @@ import { getAuthURL } from './auth/spotifyAuth';
 import Dash from './components/Dash';
 import { getPlaylists, getTracks } from './utiles/spotifyAPI';
 import classes from './App.module.css';
+import PlaylistForm from './components/PlaylistForm';
 
 function App() {
   const [playlists, setPlaylists] = useState([] as any[]);
+  // const [currentPlaylist, setCurrentPlaylist] = useState<any>({});
   const [tracks, setTracks] = useState([] as any[]);
 
 
@@ -27,11 +29,33 @@ function App() {
   //   state,
   // }
 
+  const changePlaylistHandler = async (id: string) => {
+    if(access_token) {
+      const trackData = await getTracks(access_token, id);
+      setTracks(trackData);
+    }
+   
+  }
+
   useEffect(() => {
     if(access_token) {
-      getPlaylists(access_token).then(playlistData => setPlaylists(playlistData));
-      getTracks(access_token, '37i9dQZF1DWYoDXiQsd3D2').then(trackData => setTracks(trackData));    
+      const fetchData = async () => {
+        const playlistData = await getPlaylists(access_token)
+        setPlaylists(playlistData);
+        // setCurrentPlaylist(playlistData[0]);
+        const trackData = await getTracks(access_token, playlistData[0].id);
+        setTracks(trackData);
+
+      }
+
+
+      fetchData();
+      // getPlaylists(access_token).then(playlistData => setPlaylists(playlistData))
+      // setCurrentPlaylist(playlists[0]);
+      // console.log(playlists[0])
+      // getTracks(access_token, playlists[0].id).then(trackData => setTracks(trackData));    
     }
+
 
   }, [])
 
@@ -49,8 +73,9 @@ function App() {
 
   return (
     <div className={classes.app}>
-      {access_token && <Dash />}
+      {/* {access_token && <Dash />} */}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
+      {access_token && <PlaylistForm playlists={playlists} onSubmit={changePlaylistHandler}/> }
       <div>{tracks && tracks.map((track) => (
          <li key={track.track.id}>{track.track.name}</li>
      

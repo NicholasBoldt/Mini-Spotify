@@ -7,6 +7,7 @@ export const getPlaylists = async (token: string) => {
       'Authorization': 'Bearer ' + token
     }})
     const data: any = response.data;
+    console.log(data.items)
     return data.items;
   }
 
