@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getAuthURL } from './auth/spotifyAuth';
 import Dash from './components/Dash';
-import axios from 'axios';
+import { getPlaylists, getTracks } from './utiles/spotifyAPI';
 
 function App() {
   const [playlists, setPlaylists] = useState([] as any[]);
@@ -26,31 +26,13 @@ function App() {
   //   state,
   // }
 
-  const getPlaylists = async () => {
-    const response = await axios.get('https://api.spotify.com/v1/me/playlists', {
-    url: 'https://api.spotify.com/v1/me',
-    headers: {
-      'Authorization': 'Bearer ' + access_token
-    }})
-    const data: any = response.data;
-    console.log(data.items);
-  }
+  useEffect(() => {
+    if(access_token) {
+      getPlaylists(access_token).then(playlistData => setPlaylists(playlistData));
+      getTracks(access_token, '37i9dQZF1DWYoDXiQsd3D2').then(trackData => setTracks(trackData));    
+    }
 
-
-  const getTracks = async () => {
-    const response = await axios.get('https://api.spotify.com/v1/playlists/' + '37i9dQZF1DWYoDXiQsd3D2', {
-    headers: {
-      'Authorization': 'Bearer ' + access_token
-    }})
-    const data: any = response.data;
-    setTracks(data.tracks.items)
-    console.log(data.tracks.items);
-  }
-
-  const getTracksHandler = () => {
-    getTracks();
-
-  }
+  }, [])
 
  
 
@@ -68,8 +50,7 @@ function App() {
     <div className="App">
       {access_token && <Dash />}
       {!access_token && <a href={authURL}>Authorise Spotify</a>}
-      <button onClick={getTracksHandler}>Get Tracks</button>
-      <div>{tracks.map((track) => (
+      <div>{tracks && tracks.map((track) => (
          <li key={track.track.id}>{track.track.name}</li>
      
   ))}</div>
