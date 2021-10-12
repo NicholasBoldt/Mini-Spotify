@@ -10,13 +10,10 @@ import {useDispatch } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
-  const [tracks, setTracks] = useState([] as any[]);
-
 
   const authURL = getAuthURL();
   const responseURL = window.location.href
   const access_token = searchCode('access_token', responseURL)
-
 
   console.log(access_token)
 
@@ -24,7 +21,7 @@ function App() {
     if(access_token) {
       const playlistData = await getPlaylist(access_token, id);
       dispatch({ type: 'setCurrent', payload: playlistData})
-      setTracks(playlistData.tracks.items);
+      dispatch({ type: 'setTracks', payload: playlistData.tracks.items})
     }
    
   }
@@ -36,14 +33,10 @@ function App() {
         dispatch({ type: 'setPlaylists' , payload: playlistsData})
         const playlistData = await getPlaylist(access_token, playlistsData[0].id);
         dispatch({ type: 'setCurrent', payload: playlistData})
-        setTracks(playlistData.tracks.items);
-
+        dispatch({ type: 'setTracks', payload: playlistData.tracks.items})
       }
       fetchData();
- 
     }
-
-
   }, [])
 
   return (
@@ -51,7 +44,7 @@ function App() {
       {/* {access_token && <Dash />} */}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
       {access_token && <PlaylistForm onSubmit={changePlaylistHandler}/> }
-      {tracks && <TrackList tracks={tracks} />}
+      {access_token && <TrackList />}
     </div>
   );
 }

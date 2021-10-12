@@ -1,5 +1,4 @@
 import { createStore } from 'redux';
-import TrackList from '../components/Tracks/TrackList';
 
 
 const initialState: { playlists: any[], current: any, tracks: any[]} = { 
@@ -21,6 +20,13 @@ const playlistReducer: any = (state = initialState, action: any) => {
             playlists: state.playlists,
             current: action.payload,
             tracks: state.tracks,
+        }
+    }
+    if(action.type === 'setTracks') {
+        return {
+            playlists: state.playlists,
+            current: state.current,
+            tracks: action.payload,
         }
     }
 
