@@ -1,3 +1,4 @@
+import Track from './Track';
 import classes from './TrackList.module.css';
 
 interface TrackList {
@@ -8,7 +9,7 @@ const TrackList = (props: TrackList) => {
   return (
     <div className={classes.tracklist}>
       {props.tracks.map((track) => (
-        <li className={classes.track} key={track.track.id}>{track.track.name}</li>
+        <Track key={track.track.id} name={track.track.name} album={track.track.album} artists={track.track.artists}/>
       ))}
     </div>
   );

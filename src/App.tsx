@@ -4,7 +4,7 @@ import Dash from './components/Dash';
 import { getPlaylists, getTracks } from './utiles/spotifyAPI';
 import classes from './App.module.css';
 import PlaylistForm from './components/PlaylistForm';
-import TrackList from './components/TrackList';
+import TrackList from './components/Tracks/TrackList';
 
 function App() {
   const [playlists, setPlaylists] = useState([] as any[]);

@@ -22,6 +22,7 @@ export const getTracks = async (token: string, id: string) => {
     }
   );
   const data: any = response.data;
+  console.log(data.tracks.items)
   return data.tracks.items;
 };
 
