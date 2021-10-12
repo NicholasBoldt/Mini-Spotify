@@ -12,7 +12,7 @@ export const getPlaylists = async (token: string) => {
   }
 
 
-export const getTracks = async (token: string, id: string) => {
+export const getPlaylist = async (token: string, id: string) => {
   const response = await axios.get(
     "https://api.spotify.com/v1/playlists/" + id,
     {
@@ -22,7 +22,8 @@ export const getTracks = async (token: string, id: string) => {
     }
   );
   const data: any = response.data;
+  console.log(data)
   console.log(data.tracks.items)
-  return data.tracks.items;
+  return data;
 };
 

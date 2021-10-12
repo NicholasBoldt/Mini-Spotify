@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { getAuthURL } from './auth/spotifyAuth';
 import Dash from './components/Dash';
-import { getPlaylists, getTracks } from './utiles/spotifyAPI';
+import { getPlaylists, getPlaylist } from './utiles/spotifyAPI';
 import classes from './App.module.css';
 import PlaylistForm from './components/PlaylistForm';
 import TrackList from './components/Tracks/TrackList';
 
 function App() {
   const [playlists, setPlaylists] = useState([] as any[]);
-  // const [currentPlaylist, setCurrentPlaylist] = useState<any>({});
+  const [currentPlaylist, setCurrentPlaylist] = useState<any>({});
   const [tracks, setTracks] = useState([] as any[]);
 
 
@@ -32,8 +32,9 @@ function App() {
 
   const changePlaylistHandler = async (id: string) => {
     if(access_token) {
-      const trackData = await getTracks(access_token, id);
-      setTracks(trackData);
+      const playlistData = await getPlaylist(access_token, id);
+      setCurrentPlaylist(playlistData)
+      setTracks(playlistData.tracks.items);
     }
    
   }
@@ -41,11 +42,12 @@ function App() {
   useEffect(() => {
     if(access_token) {
       const fetchData = async () => {
-        const playlistData = await getPlaylists(access_token)
-        setPlaylists(playlistData);
+        const playlistsData = await getPlaylists(access_token)
+        setPlaylists(playlistsData);
         // setCurrentPlaylist(playlistData[0]);
-        const trackData = await getTracks(access_token, playlistData[0].id);
-        setTracks(trackData);
+        const playlistData = await getPlaylist(access_token, playlistsData[0].id);
+        setCurrentPlaylist(playlistData)
+        setTracks(playlistData.tracks.items);
 
       }
 
@@ -76,7 +78,7 @@ function App() {
     <div className={classes.app}>
       {/* {access_token && <Dash />} */}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
-      {access_token && <PlaylistForm playlists={playlists} onSubmit={changePlaylistHandler}/> }
+      {access_token && <PlaylistForm playlists={playlists} current={currentPlaylist} onSubmit={changePlaylistHandler}/> }
       {tracks && <TrackList tracks={tracks} />}
     </div>
   );

@@ -1,10 +1,12 @@
 import classes from "./PlaylistForm.module.css";
+import { current } from "@reduxjs/toolkit";
 
 
 
 interface PlaylistForm {
-    playlists: any[]
-    onSubmit: any
+    playlists: any[];
+    current: any;
+    onSubmit: any;
 }
 
 
@@ -27,6 +29,7 @@ const PlaylistForm = (props:PlaylistForm) => {
             ))}
         </select>
       </label>
+      <div>{props.current.description}</div>
     </form>
   );
 };
