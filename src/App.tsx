@@ -3,7 +3,7 @@ import { getAuthURL } from './auth/spotifyAuth';
 import Dash from './components/Dash';
 import { getPlaylists, getPlaylist } from './utiles/spotifyAPI';
 import classes from './App.module.css';
-import PlaylistForm from './components/PlaylistForm';
+import PlaylistForm from './components/PlaylistForm/PlaylistForm';
 import TrackList from './components/Tracks/TrackList';
 
 function App() {
