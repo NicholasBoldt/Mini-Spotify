@@ -1,23 +1,29 @@
 import classes from "./PlaylistForm.module.css";
 import Select from 'react-select';
-import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 
 
 interface PlaylistForm {
-    playlists: any[];
     current: any;
     onSubmit: any;
 }
 
+interface SelectorState {
+  playlists: any[]
+}
+
 
 const PlaylistForm = (props:PlaylistForm) => {
+  const playlists = useSelector((state: SelectorState) => state.playlists);
+  console.log(playlists)
+
   const selected = {value: props.current.id, label: props.current.name}
 
     const handleChange = (selected: any) => {
         props.onSubmit(selected.value);
     }
 
-    const options: Array<any> = props.playlists.map((playlist) => (
+    const options: Array<any> = playlists.map((playlist) => (
         {value: playlist.id, label: playlist.name}
     ))
   

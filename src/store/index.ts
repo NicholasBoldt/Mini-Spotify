@@ -1,7 +1,25 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { createStore } from 'redux';
 
-const store = configureStore({
-    reducer: { }
-})
+
+const initialState: { playlists: any[]} = { 
+    playlists: [],
+};
+
+const playlistReducer: any = (state = initialState, action: any) => {
+    if(action.type === 'setPlaylists') {
+        console.log('hit')
+        return {
+            playlists: action.payload
+        }
+    }
+
+    return state;
+}
+
+
+const store = createStore(playlistReducer);
+
 
 export default store;
+
+
