@@ -4,20 +4,21 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 interface PlaylistForm {
-    current: any;
     onSubmit: any;
 }
 
 interface SelectorState {
   playlists: any[]
+  current: any
 }
 
 
 const PlaylistForm = (props:PlaylistForm) => {
   const playlists = useSelector((state: SelectorState) => state.playlists);
+  const current = useSelector((state: SelectorState) => state.current);
   console.log(playlists)
 
-  const selected = {value: props.current.id, label: props.current.name}
+  const selected = {value: current.id, label: current.name}
 
     const handleChange = (selected: any) => {
         props.onSubmit(selected.value);
@@ -36,7 +37,7 @@ const PlaylistForm = (props:PlaylistForm) => {
         onChange={handleChange}
         options={options}
       />
-      <div>{props.current.description}</div>
+      <div>{current.description}</div>
     </div>
     
     // <form>

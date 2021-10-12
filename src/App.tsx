@@ -10,8 +10,6 @@ import {useDispatch } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
-  // const [playlists, setPlaylists] = useState([] as any[]);
-  const [currentPlaylist, setCurrentPlaylist] = useState<any>({});
   const [tracks, setTracks] = useState([] as any[]);
 
 
@@ -25,7 +23,7 @@ function App() {
   const changePlaylistHandler = async (id: string) => {
     if(access_token) {
       const playlistData = await getPlaylist(access_token, id);
-      setCurrentPlaylist(playlistData)
+      dispatch({ type: 'setCurrent', payload: playlistData})
       setTracks(playlistData.tracks.items);
     }
    
@@ -36,10 +34,8 @@ function App() {
       const fetchData = async () => {
         const playlistsData = await getPlaylists(access_token)
         dispatch({ type: 'setPlaylists' , payload: playlistsData})
-        // setPlaylists(playlistsData);
-        // setCurrentPlaylist(playlistData[0]);
         const playlistData = await getPlaylist(access_token, playlistsData[0].id);
-        setCurrentPlaylist(playlistData)
+        dispatch({ type: 'setCurrent', payload: playlistData})
         setTracks(playlistData.tracks.items);
 
       }
@@ -50,23 +46,11 @@ function App() {
 
   }, [])
 
- 
-
-  
-
-  
-
-
-
-
-  // const playlists : Promise < any[] > = d;
-
-
   return (
     <div className={classes.app}>
       {/* {access_token && <Dash />} */}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
-      {access_token && <PlaylistForm current={currentPlaylist} onSubmit={changePlaylistHandler}/> }
+      {access_token && <PlaylistForm onSubmit={changePlaylistHandler}/> }
       {tracks && <TrackList tracks={tracks} />}
     </div>
   );
