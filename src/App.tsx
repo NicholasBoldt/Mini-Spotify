@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { getAuthURL } from './auth/spotifyAuth';
 import Dash from './components/Dash';
-import { getPlaylists, getPlaylist, getUser } from './utiles/spotifyAPI';
+import { getPlaylists, getPlaylist, getUser, createPlaylist } from './utiles/spotifyAPI';
 import classes from './App.module.css';
 import PlaylistForm from './components/PlaylistForm/PlaylistForm';
 import TrackList from './components/Tracks/TrackList';
-import {useDispatch } from 'react-redux';
+import {useDispatch, useSelector } from 'react-redux';
 
 
 function App() {
   const dispatch = useDispatch();
+  // const userId = useSelector((state: any) => state.userId)
 
   const authURL = getAuthURL();
   const responseURL = window.location.href
@@ -41,12 +42,25 @@ function App() {
     }
   }, [])
 
+  // const createPlaylistHandler = async () =>{
+  //   if(access_token) {
+  //     await createPlaylist(access_token, userId, {
+  //       "name": "New Playlist",
+  //     "description": "New playlist description",
+  //       "public": false
+  //     })
+  //   }
+   
+  // }
+
+
   return (
     <div className={classes.app}>
       {/* {access_token && <Dash />} */}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
       {access_token && <PlaylistForm onSubmit={changePlaylistHandler}/> }
       {access_token && <TrackList />}
+      <button onClick={createPlaylistHandler}>Create Playlist</button>
     </div>
   );
 }

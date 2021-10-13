@@ -40,6 +40,21 @@ export const getUser = async (token: string) => {
   return data;
 };
 
+export const createPlaylist = async (token: string, userId: string, newPlaylist: any) => {
+  const response = await axios.post(
+    `https://api.spotify.com/v1/users/${userId}/playlists`,
+    newPlaylist, 
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+  const data: any = response.data;
+  console.log(data)
+  return data;
+};
+
 
 
 
