@@ -10,17 +10,21 @@ const Dashboard = (props: any) => {
     const current = useSelector((state: any) => state.current);
     const [create, setCreate] = useState(false);
 
-    const setCreateHandler = () => {
+    const createHandler = () => {
         setCreate(true);
+    }
+
+    const confirmHandler = () => {
+        setCreate(false);
     }
 
 
     return <div className={classes.dashboard}>
-        {create && <CreatePlaylistForm />}
+        {create && <CreatePlaylistForm onConfirm={confirmHandler}/>}
         <div className={classes.options}>
             <PlaylistForm onSubmit={props.changePlaylistHandler}/> 
             <div>{current.description}</div>
-            <button className={classes.create_playlist_button} onClick={setCreateHandler}>Create Playlist</button>
+            <button className={classes.create_playlist_button} onClick={createHandler}>Create Playlist</button>
         </div>
         <TrackList />
          
