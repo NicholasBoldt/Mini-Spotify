@@ -4,6 +4,7 @@ import classes from './Dashboard.module.css'
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import CreatePlaylistForm from "./CreatePlaylist/CreatePlaylistForm";
+import Button from "./UI/Button";
 
 
 const Dashboard = (props: any) => {
@@ -23,8 +24,8 @@ const Dashboard = (props: any) => {
         {create && <CreatePlaylistForm onConfirm={confirmHandler}/>}
         <div className={classes.options}>
             <PlaylistForm onSubmit={props.changePlaylistHandler}/> 
-            <div>{current.description}</div>
-            <button className={classes.create_playlist_button} onClick={createHandler}>Create Playlist</button>
+            <div className={classes.description}>{current.description}</div>
+            <Button className={classes.create_playlist_button} onClick={createHandler}>Create Playlist</Button>
         </div>
         <TrackList />
          

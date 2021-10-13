@@ -1,6 +1,7 @@
 import Card from "../UI/Card";
 import classes from "./CreatePlaylistForm.module.css";
 import { cleanCommonProps } from "react-select/dist/declarations/src/utils";
+import Button from "../UI/Button";
 
 const CreatePlaylistForm = (props: any) => {
   return (
@@ -8,9 +9,9 @@ const CreatePlaylistForm = (props: any) => {
       <div className={classes.backdrop} onClick={props.onConfirm}></div>
       <Card className={classes.modal}>
         <div>create playlist</div>
-        <button onClick={props.onConfirm}>
+        <Button onClick={props.onConfirm}>
             Submit
-        </button>
+        </Button>
       </Card>
     </div>
   );

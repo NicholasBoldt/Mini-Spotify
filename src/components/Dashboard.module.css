@@ -1,4 +1,4 @@
-.create_playlist_button {
+/* .create_playlist_button {
     text-decoration: none;
     background-color: #1DB954;
     border-color: #1DB954;
@@ -8,10 +8,15 @@
     line-height: 20px;
     font-weight: 700;
     outline: inherit;
-  }
+  } */
 
   .options {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 15px;
+  }
+
+  .description {
+    width: 400px;
   }
