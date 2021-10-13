@@ -56,6 +56,22 @@ export const createPlaylist = async (token: string, userId: string, newPlaylist:
   return data;
 };
 
+export const editPlaylist = async (token: string, id: string, editedPlaylist: any) => {
+  console.log(editedPlaylist)
+  const response = await axios.put(
+    `https://api.spotify.com/v1/playlists/` + id,
+    editedPlaylist, 
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+  const data: any = response.data;
+  console.log(data)
+  return data;
+};
+
 
 
 

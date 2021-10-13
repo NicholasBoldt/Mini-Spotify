@@ -3,6 +3,7 @@ import classes from "./CreatePlaylistForm.module.css";
 import { cleanCommonProps } from "react-select/dist/declarations/src/utils";
 import Button from "../UI/Button";
 import { useState } from "react";
+import React from "react";
 
 const CreatePlaylistForm = (props: any) => {
   const [playlistName, setPlaylistName] = useState('');
