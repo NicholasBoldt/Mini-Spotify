@@ -41,6 +41,7 @@ export const getUser = async (token: string) => {
 };
 
 export const createPlaylist = async (token: string, userId: string, newPlaylist: any) => {
+  console.log(newPlaylist)
   const response = await axios.post(
     `https://api.spotify.com/v1/users/${userId}/playlists`,
     newPlaylist, 

@@ -21,7 +21,7 @@ const Dashboard = (props: any) => {
 
 
     return <div className={classes.dashboard}>
-        {create && <CreatePlaylistForm onConfirm={confirmHandler}/>}
+        {create && <CreatePlaylistForm onConfirm={confirmHandler} onSubmitPlaylist={props.createPlaylistHandler}/>}
         <div className={classes.options}>
             <PlaylistForm onSubmit={props.changePlaylistHandler}/> 
             <div className={classes.description}>{current.description}</div>
