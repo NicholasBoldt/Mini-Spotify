@@ -60,7 +60,7 @@ function App() {
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
       {access_token && <PlaylistForm onSubmit={changePlaylistHandler}/> }
       {access_token && <TrackList />}
-      <button onClick={createPlaylistHandler}>Create Playlist</button>
+      <button className={classes.create_playlist_button}>Create Playlist</button>
     </div>
   );
 }
