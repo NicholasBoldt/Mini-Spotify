@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { getAuthURL } from './auth/spotifyAuth';
 import Dash from './components/Dashboard';
-import { getPlaylists, getPlaylist, getUser, createPlaylist } from './utiles/spotifyAPI';
+import { getPlaylists, getPlaylist, getUser, createPlaylist, editPlaylist } from './utiles/spotifyAPI';
 import classes from './App.module.css';
-import PlaylistForm from './components/PlaylistForm/PlaylistForm';
-import TrackList from './components/Tracks/TrackList';
 import {useDispatch, useSelector } from 'react-redux';
 
 
 function App() {
   const dispatch = useDispatch();
   const userId = useSelector((state: any) => state.userId);
+  const current = useSelector((state: any) => state.current);
 
   const authURL = getAuthURL();
   const responseURL = window.location.href
@@ -32,8 +31,13 @@ function App() {
       await createPlaylist(access_token, userId, submitData)
       fetchData();
     }
+  }
 
-    
+  const editPlaylistHandler = async (submitData: any) => {
+    if(access_token) {
+      await editPlaylist(access_token, current.id, submitData)
+      fetchData();
+    }
   }
 
   const fetchData = async () => {

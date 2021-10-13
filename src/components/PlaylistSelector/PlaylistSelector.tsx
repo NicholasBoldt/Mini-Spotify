@@ -1,9 +1,10 @@
-import classes from "./PlaylistForm.module.css";
+import classes from "./PlaylistSelector.module.css";
 import Select from 'react-select';
 import { useSelector, useDispatch } from 'react-redux';
+import React from "react";
 
 
-interface PlaylistForm {
+interface PlaylistSelector {
     onSubmit: any;
 }
 
@@ -13,7 +14,7 @@ interface SelectorState {
 }
 
 
-const PlaylistForm = (props:PlaylistForm) => {
+const PlaylistSelector = (props:PlaylistSelector) => {
   const playlists = useSelector((state: SelectorState) => state.playlists);
   const current = useSelector((state: SelectorState) => state.current);
   console.log(playlists)
@@ -53,4 +54,4 @@ const PlaylistForm = (props:PlaylistForm) => {
   );
 };
 
-export default PlaylistForm;
+export default PlaylistSelector;

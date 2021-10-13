@@ -1,4 +1,4 @@
-import PlaylistForm from "./PlaylistForm/PlaylistForm";
+import PlaylistSelector from "./PlaylistSelector/PlaylistSelector";
 import TrackList from "./Tracks/TrackList";
 import classes from './Dashboard.module.css'
 import { useSelector } from "react-redux";
@@ -24,7 +24,7 @@ const Dashboard = (props: any) => {
     return <div className={classes.dashboard}>
         {create && <CreatePlaylistForm onConfirm={confirmHandler} onSubmitPlaylist={props.createPlaylistHandler}/>}
         <div className={classes.options}>
-            <PlaylistForm onSubmit={props.changePlaylistHandler}/> 
+            <PlaylistSelector onSubmit={props.changePlaylistHandler}/> 
             <div className={classes.description}>{current.description}</div>
             <Button className={classes.create_playlist_button} onClick={createHandler}>Create Playlist</Button>
         </div>
