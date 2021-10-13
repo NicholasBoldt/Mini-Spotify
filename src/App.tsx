@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAuthURL } from './auth/spotifyAuth';
-import Dash from './components/Dash';
+import Dash from './components/Dashboard';
 import { getPlaylists, getPlaylist, getUser, createPlaylist } from './utiles/spotifyAPI';
 import classes from './App.module.css';
 import PlaylistForm from './components/PlaylistForm/PlaylistForm';
@@ -56,11 +56,8 @@ function App() {
 
   return (
     <div className={classes.app}>
-      {/* {access_token && <Dash />} */}
+      {access_token && <Dash changePlaylistHandler={changePlaylistHandler}/>}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
-      {access_token && <PlaylistForm onSubmit={changePlaylistHandler}/> }
-      {access_token && <TrackList />}
-      <button className={classes.create_playlist_button}>Create Playlist</button>
     </div>
   );
 }

@@ -37,7 +37,6 @@ const PlaylistForm = (props:PlaylistForm) => {
         onChange={handleChange}
         options={options}
       />
-      <div>{current.description}</div>
     </div>
     
     // <form>
