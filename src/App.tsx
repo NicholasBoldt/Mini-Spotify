@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAuthURL } from './auth/spotifyAuth';
 import Dash from './components/Dash';
-import { getPlaylists, getPlaylist } from './utiles/spotifyAPI';
+import { getPlaylists, getPlaylist, getUser } from './utiles/spotifyAPI';
 import classes from './App.module.css';
 import PlaylistForm from './components/PlaylistForm/PlaylistForm';
 import TrackList from './components/Tracks/TrackList';
@@ -34,6 +34,8 @@ function App() {
         const playlistData = await getPlaylist(access_token, playlistsData[0].id);
         dispatch({ type: 'setCurrent', payload: playlistData})
         dispatch({ type: 'setTracks', payload: playlistData.tracks.items})
+        const userData = await getUser(access_token);
+        dispatch({ type: 'setUserId', payload: userData.id})
       }
       fetchData();
     }
