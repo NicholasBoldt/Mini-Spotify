@@ -1,5 +1,8 @@
+import Card from "../UI/Card";
+import classes from "./CreatePlaylistForm.module.css";
+
 const CreatePlaylistForm = () => {
-    return <div>create playlist</div>
+    return <Card className={classes.modal}><div>create playlist</div></Card>
 }
 
 export default CreatePlaylistForm;
