@@ -74,7 +74,7 @@ function App() {
 
   return (
     <div className={classes.app}>
-      {access_token && <Dash changePlaylistHandler={changePlaylistHandler} createPlaylistHandler={createPlaylistHandler}/>}
+      {access_token && <Dash changePlaylistHandler={changePlaylistHandler} createPlaylistHandler={createPlaylistHandler} editPlaylistHandler={editPlaylistHandler}/>}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
     </div>
   );
