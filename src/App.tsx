@@ -14,6 +14,7 @@ function App() {
   const authURL = getAuthURL();
   const responseURL = window.location.href
   const access_token = searchCode('access_token', responseURL)
+  dispatch({type: "setAccessCode", payload: access_token})
 
   console.log(access_token)
 

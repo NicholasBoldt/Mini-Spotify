@@ -73,8 +73,10 @@ export const editPlaylist = async (token: string, id: string, editedPlaylist: an
 };
 
 export const searchTracks = async (token: string, trackSearch: string) => {
+  const url = `https://api.spotify.com/v1/search?q=${trackSearch}&type=track&market=US&limit=3&offset=5`;
+  console.log(url)
   const response = await axios.get(
-    `https://api.spotify.com/v1/search?query=${trackSearch}"&type=track&market=US&offset=0&limit=3`,
+    url,
     {
       headers: {
         Authorization: "Bearer " + token,
