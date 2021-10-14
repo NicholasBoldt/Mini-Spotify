@@ -87,6 +87,41 @@ export const searchTracks = async (token: string, trackSearch: string) => {
 };
 
 
+export const addTracks = async (token: string, playlistId: string, track: string) => {
+  const response = await axios.post(
+    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?uris=spotify:track:${track}`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+  const data: any = response.data;
+  console.log(data)
+  return data;
+};
+
+// export const removeTracks = async (token: string, playlistId: string, track: string) => {
+//   const body = {
+//     "tracks": [
+//       {
+//         "uri": "spotify:track:7MDKvOzNgAJ3KMCtaP2UOa"
+//       }
+//     ]
+//   }
+//   const response = await axios.delete(
+//     `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+//     {
+//       headers: {
+//         Authorization: "Bearer " + token,
+//       }
+//     }, {data: body},
+//   );
+//   const data: any = response.data;
+//   console.log(data)
+//   return data;
+// };
+
 
 
 
