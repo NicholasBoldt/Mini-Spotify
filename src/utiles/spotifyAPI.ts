@@ -72,7 +72,19 @@ export const editPlaylist = async (token: string, id: string, editedPlaylist: an
   return data;
 };
 
-
+export const searchTracks = async (token: string, trackSearch: string) => {
+  const response = await axios.get(
+    `https://api.spotify.com/v1/search?query=${trackSearch}"&type=track&market=US&offset=0&limit=3`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+  const data: any = response.data;
+  console.log(data)
+  return data;
+};
 
 
 

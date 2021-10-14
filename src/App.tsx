@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAuthURL } from './auth/spotifyAuth';
 import Dash from './components/Dashboard';
-import { getPlaylists, getPlaylist, getUser, createPlaylist, editPlaylist } from './utiles/spotifyAPI';
+import { getPlaylists, getPlaylist, getUser, createPlaylist, editPlaylist, searchTracks } from './utiles/spotifyAPI';
 import classes from './App.module.css';
 import {useDispatch, useSelector } from 'react-redux';
 
@@ -52,6 +52,8 @@ function App() {
     }
   
   }
+
+ 
 
   useEffect(() => {
     if(access_token) {
