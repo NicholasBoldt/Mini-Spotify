@@ -19,7 +19,7 @@ const CreatePlaylistForm = (props: any) => {
 
   const submitHandler = (event: any) => {
     event.preventDefault();
-    if(playlistName.trim().length !== 0 && playlistDescription.trim().length !== 0) {
+    if(playlistName.trim().length !== 0) {
         console.log("submitted", playlistName, playlistDescription);
     props.onSubmitPlaylist({
       name: playlistName,
