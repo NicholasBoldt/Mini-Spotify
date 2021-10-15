@@ -41,10 +41,10 @@ function App() {
     }
   }
 
-  const addNewTrackHandler = async (trackId: any) => {
+  const addNewTrackHandler = async (trackURI: any) => {
     if(access_token) {
       console.log('worked')
-      await addTracks(access_token, current.id, trackId)
+      await addTracks(access_token, current.id, trackURI)
       fetchData();
     }
   }

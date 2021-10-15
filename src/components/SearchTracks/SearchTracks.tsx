@@ -34,6 +34,7 @@ const SearchTrack = (props: any) => {
     return <div>
           <div className={classes.backdrop} onClick={props.onConfirm}></div>
         <Card className={classes.modal}>
+            <header className={classes.header}><h2>Search for a Title</h2></header>
             <form onSubmit={submitHandler}>
                 <div>
                     <label>Track Name</label>

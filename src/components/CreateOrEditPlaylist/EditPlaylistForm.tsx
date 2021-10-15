@@ -38,6 +38,7 @@ const EditPlaylistForm = (props: any) => {
         <div>
             <div className={classes.backdrop} onClick={props.onConfirm}></div>
             <Card className={classes.modal}>
+            <header className={classes.header}><h2>Edit {current.name}</h2></header>
                 <form onSubmit={submitHandler}>
                     <div>
                         <label>Playlist Name</label>

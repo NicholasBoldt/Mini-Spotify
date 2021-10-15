@@ -37,6 +37,7 @@ const CreatePlaylistForm = (props: any) => {
     <div>
       <div className={classes.backdrop} onClick={props.onConfirm}></div>
       <Card className={classes.modal}>
+      <header className={classes.header}><h2>Create a Playlist</h2></header>
         <form onSubmit={submitHandler}>
           <div>
             <label>Playlist Name</label>

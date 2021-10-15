@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     height: 70px;
-    width: 700px;
+    width: 500px;
     list-style-type:none;
     border: 1px solid black;
     border-radius: 4px;
@@ -13,7 +13,7 @@
 
 .cover {
     height: 70px;
-    width: 70ipx;
+    width: 70px;
 }
 
 .release {
