@@ -6,13 +6,13 @@ interface SelectorState {
   tracks: any[];
 }
 
-const TrackList = () => {
+const TrackList = (props: any) => {
   const tracks = useSelector((state: SelectorState) => state.tracks);
 
   return (
     <div className={classes.tracklist}>
       {tracks.map((track) => (
-        <Track key={track.track.id} name={track.track.name} album={track.track.album} artists={track.track.artists}/>
+        <Track key={track.track.id} onSubmitNewTrack={props.onSubmitNewTrack} uri={track.track.uri} name={track.track.name} album={track.track.album} artists={track.track.artists} add={false}/>
       ))}
     </div>
   );

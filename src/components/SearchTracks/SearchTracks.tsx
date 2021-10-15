@@ -51,7 +51,7 @@ const SearchTrack = (props: any) => {
                 </div>
 
             </form>
-            {results && <SearchList results={results}/>}
+            {results && <SearchList  onSubmitNewTrack={props.onSubmitNewTrack} results={results}/>}
     </Card></div>
 }
 

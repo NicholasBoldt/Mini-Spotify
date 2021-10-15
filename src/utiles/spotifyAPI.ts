@@ -90,10 +90,13 @@ export const searchTracks = async (token: string, trackSearch: string) => {
 
 
 export const addTracks = async (token: string, playlistId: string, track: string) => {
+  console.log(track)
   const response = await axios.post(
-    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?uris=spotify:track:${track}`,
+    `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+    {"uris": [track]},
     {
       headers: {
+        'Content-type': 'application/json',
         Authorization: "Bearer " + token,
       },
     }
@@ -111,14 +114,14 @@ export const addTracks = async (token: string, playlistId: string, track: string
 //       }
 //     ]
 //   }
-//   const response = await axios.delete(
-//     `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
-//     {
-//       headers: {
-//         Authorization: "Bearer " + token,
-//       }
-//     }, {data: body},
-//   );
+//   // const response = await axios.delete(
+//   //   `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+//   //   {
+//   //     headers: {
+//   //       Authorization: "Bearer " + token,
+//   //     }
+//   //   },
+//   // );
 //   const data: any = response.data;
 //   console.log(data)
 //   return data;

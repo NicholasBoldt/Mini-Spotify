@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAuthURL } from './auth/spotifyAuth';
 import Dash from './components/Dashboard';
-import { getPlaylists, getPlaylist, getUser, createPlaylist, editPlaylist, searchTracks } from './utiles/spotifyAPI';
+import { getPlaylists, getPlaylist, getUser, createPlaylist, editPlaylist, searchTracks, addTracks } from './utiles/spotifyAPI';
 import classes from './App.module.css';
 import {useDispatch, useSelector } from 'react-redux';
 
@@ -41,6 +41,14 @@ function App() {
     }
   }
 
+  const addNewTrackHandler = async (trackId: any) => {
+    if(access_token) {
+      console.log('worked')
+      await addTracks(access_token, current.id, trackId)
+      fetchData();
+    }
+  }
+
   const fetchData = async () => {
     if(access_token) {
       const playlistsData = await getPlaylists(access_token)
@@ -63,21 +71,10 @@ function App() {
     }
   }, [])
 
-  // const createPlaylistHandler = async () =>{
-  //   if(access_token) {
-  //     await createPlaylist(access_token, userId, {
-  //       "name": "New Playlist",
-  //     "description": "New playlist description",
-  //       "public": false
-  //     })
-  //   }
-   
-  // }
-
 
   return (
     <div className={classes.app}>
-      {access_token && <Dash changePlaylistHandler={changePlaylistHandler} createPlaylistHandler={createPlaylistHandler} editPlaylistHandler={editPlaylistHandler}/>}
+      {access_token && <Dash changePlaylistHandler={changePlaylistHandler} onSubmitNewTrack={addNewTrackHandler} createPlaylistHandler={createPlaylistHandler} editPlaylistHandler={editPlaylistHandler}/>}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
     </div>
   );
