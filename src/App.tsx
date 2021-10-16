@@ -24,20 +24,19 @@ function App() {
       dispatch({ type: 'setCurrent', payload: playlistData})
       dispatch({ type: 'setTracks', payload: playlistData.tracks.items})
     }
-   
   }
 
   const createPlaylistHandler = async (submitData: any) => {
     if(access_token) {
       await createPlaylist(access_token, userId, submitData)
-      fetchData();
+      dispatch({type:'PLAYLIST_FETCH_REQUESTED', payload: access_token})
     }
   }
 
   const editPlaylistHandler = async (submitData: any) => {
     if(access_token) {
       await editPlaylist(access_token, current.id, submitData)
-      fetchData();
+      dispatch({type:'PLAYLIST_FETCH_REQUESTED', payload: access_token})
     }
   }
 
@@ -45,29 +44,27 @@ function App() {
     if(access_token) {
       console.log('worked')
       await addTracks(access_token, current.id, trackURI)
-      fetchData();
+      dispatch({type:'PLAYLIST_FETCH_REQUESTED', payload: access_token})
     }
   }
 
-  const fetchData = async () => {
-    if(access_token) {
-      const playlistsData = await getPlaylists(access_token)
-      dispatch({ type: 'setPlaylists' , payload: playlistsData})
-      const playlistData = await getPlaylist(access_token, playlistsData[0].id);
-      dispatch({ type: 'setCurrent', payload: playlistData})
-      dispatch({ type: 'setTracks', payload: playlistData.tracks.items})
-      const userData = await getUser(access_token);
-      dispatch({ type: 'setUserId', payload: userData.id})
-    }
-  
-  }
+  // const fetchData = async () => {
+  //   if(access_token) {
+  //     // const playlistsData = await getPlaylists(access_token)
+  //     // dispatch({ type: 'setPlaylists' , payload: playlistsData})
+  //     // const playlistData = await getPlaylist(access_token, playlistsData[0].id);
+  //     // dispatch({ type: 'setCurrent', payload: playlistData})
+  //     // dispatch({ type: 'setTracks', payload: playlistData.tracks.items})
+  //     const userData = await getUser(access_token);
+  //     dispatch({ type: 'setUserId', payload: userData.id})
+  //   }
+  // }
 
- 
 
   useEffect(() => {
     if(access_token) {
-      
-      fetchData();
+      dispatch({type:'PLAYLIST_FETCH_REQUESTED', payload: access_token})
+      // fetchData();
     }
   }, [])
 

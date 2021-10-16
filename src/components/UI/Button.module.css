@@ -13,7 +13,7 @@
   .button:active {
     background: #1DB954;
     border-color: #1DB954;
-    transform: scale(1.1)
+    transform: scale(1.05)
   }
   
   .button:focus {
