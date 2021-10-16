@@ -18,25 +18,17 @@ function App() {
 
   console.log(access_token)
 
-  const changePlaylistHandler = async (id: string) => {
-    if(access_token) {
-      const playlistData = await getPlaylist(access_token, id);
-      dispatch({ type: 'setCurrent', payload: playlistData})
-      dispatch({ type: 'setTracks', payload: playlistData.tracks.items})
-    }
-  }
-
   const createPlaylistHandler = async (submitData: any) => {
     if(access_token) {
       await createPlaylist(access_token, userId, submitData)
-      dispatch({type:'PLAYLIST_FETCH_REQUESTED', payload: access_token})
+      dispatch({type:'PLAYLISTS_FETCH_REQUESTED', payload: access_token})
     }
   }
 
   const editPlaylistHandler = async (submitData: any) => {
     if(access_token) {
       await editPlaylist(access_token, current.id, submitData)
-      dispatch({type:'PLAYLIST_FETCH_REQUESTED', payload: access_token})
+      dispatch({type:'PLAYLISTS_FETCH_REQUESTED', payload: access_token})
     }
   }
 
@@ -44,7 +36,7 @@ function App() {
     if(access_token) {
       console.log('worked')
       await addTracks(access_token, current.id, trackURI)
-      dispatch({type:'PLAYLIST_FETCH_REQUESTED', payload: access_token})
+      dispatch({type:'PLAYLISTS_FETCH_REQUESTED', payload: access_token})
     }
   }
 
@@ -63,7 +55,7 @@ function App() {
 
   useEffect(() => {
     if(access_token) {
-      dispatch({type:'PLAYLIST_FETCH_REQUESTED', payload: access_token})
+      dispatch({type:'PLAYLISTS_FETCH_REQUESTED', payload: access_token})
       // fetchData();
     }
   }, [])
@@ -71,7 +63,7 @@ function App() {
 
   return (
     <div className={classes.app}>
-      {access_token && <Dash changePlaylistHandler={changePlaylistHandler} onSubmitNewTrack={addNewTrackHandler} createPlaylistHandler={createPlaylistHandler} editPlaylistHandler={editPlaylistHandler}/>}
+      {access_token && <Dash onSubmitNewTrack={addNewTrackHandler} createPlaylistHandler={createPlaylistHandler} editPlaylistHandler={editPlaylistHandler}/>}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
     </div>
   );

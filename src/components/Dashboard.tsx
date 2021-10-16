@@ -42,7 +42,7 @@ const Dashboard = (props: any) => {
         <div className={classes.options}>
             <Button onClick={searchHandler}>Search</Button>
             <Button onClick={editHandler}>Edit</Button>
-            <PlaylistSelector onSubmit={props.changePlaylistHandler}/> 
+            <PlaylistSelector/> 
             <div className={classes.description}>{current.description}</div>
             <Button onClick={createHandler}>Create Playlist</Button>
         </div>

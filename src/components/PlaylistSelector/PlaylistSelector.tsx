@@ -3,26 +3,25 @@ import Select from 'react-select';
 import { useSelector, useDispatch } from 'react-redux';
 import React from "react";
 
-
-interface PlaylistSelector {
-    onSubmit: any;
-}
-
 interface SelectorState {
   playlists: any[]
   current: any
+  access_code: string
 }
 
 
-const PlaylistSelector = (props:PlaylistSelector) => {
+const PlaylistSelector = () => {
+  const dispatch = useDispatch();
   const playlists = useSelector((state: SelectorState) => state.playlists);
   const current = useSelector((state: SelectorState) => state.current);
+  const access_code = useSelector((state: SelectorState) => state.access_code);
   console.log(playlists)
 
   const selected = {value: current.id, label: current.name}
 
     const handleChange = (selected: any) => {
-        props.onSubmit(selected.value);
+      const data = {access_code, id: selected.value}
+      dispatch({ type: 'PLAYLIST_FETCH_REQUESTED', payload: data })
     }
 
     const options: Array<any> = playlists.map((playlist) => (
