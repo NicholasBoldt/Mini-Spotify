@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAuthURL } from './auth/spotifyAuth';
 import Dash from './components/Dashboard';
-import { getPlaylists, getPlaylist, getUser, createPlaylist, editPlaylist, searchTracks, addTracks } from './utiles/spotifyAPI';
+import { addTracks } from './utiles/spotifyAPI';
 import classes from './App.module.css';
 import {useDispatch, useSelector } from 'react-redux';
 
@@ -18,13 +18,6 @@ function App() {
 
   console.log(access_token)
 
-  const editPlaylistHandler = async (submitData: any) => {
-    if(access_token) {
-      await editPlaylist(access_token, current.id, submitData)
-      dispatch({type:'PLAYLISTS_FETCH_REQUESTED', payload: access_token})
-    }
-  }
-
   const addNewTrackHandler = async (trackURI: any) => {
     if(access_token) {
       console.log('worked')
@@ -33,23 +26,17 @@ function App() {
     }
   }
 
-  const fetchData = async () => {
-    if(access_token) {
-      dispatch({type:'PLAYLISTS_FETCH_REQUESTED', payload: access_token})
-    }
-  }
-
 
   useEffect(() => {
     if(access_token) {
-      fetchData();
+      dispatch({type:'PLAYLISTS_FETCH_REQUESTED', payload: access_token})
     }
   }, [])
 
 
   return (
     <div className={classes.app}>
-      {access_token && <Dash onSubmitNewTrack={addNewTrackHandler} editPlaylistHandler={editPlaylistHandler}/>}
+      {access_token && <Dash onSubmitNewTrack={addNewTrackHandler}/>}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
     </div>
   );

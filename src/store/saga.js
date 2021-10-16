@@ -1,5 +1,5 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
-import { getPlaylists, getPlaylist, getUser, createPlaylist } from '../utiles/spotifyAPI';
+import { getPlaylists, getPlaylist, getUser, createPlaylist, editPlaylist } from '../utiles/spotifyAPI';
 
 
 
@@ -43,11 +43,25 @@ function* fetchCreatePlaylist(action) {
    }
 }
 
+function* fetchEditPlaylist(action) {
+   try {
+      yield call(editPlaylist, action.payload.access_token, action.payload.id, action.payload.submitData);
+      const playlists = yield call(getPlaylists, action.payload.access_token);
+      yield put({type: "setPlaylists", payload: playlists});
+      const current = yield call(getPlaylist, action.payload.access_token, action.payload.id);
+      yield put({type: "setCurrent", payload: current});
+      yield put({type: "setTracks", payload: current.tracks.items});
+   } catch (e) {
+      yield put({type: "getPlaylistsFailed", message: e.message});
+   }
+}
+
 
  function* mySaga() {
     yield takeEvery("PLAYLISTS_FETCH_REQUESTED", fetchData);
     yield takeEvery("PLAYLIST_FETCH_REQUESTED", fetchPlaylist);
     yield takeEvery("CREATE_FETCH_REQUESTED", fetchCreatePlaylist);
+    yield takeEvery("EDIT_FETCH_REQUESTED", fetchEditPlaylist);
   }
 
   export default mySaga;

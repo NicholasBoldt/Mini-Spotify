@@ -3,10 +3,13 @@ import classes from "./CreatePlaylistForm.module.css";
 import Button from "../UI/Button";
 import { useState } from "react";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const EditPlaylistForm = (props: any) => {
+    const dispatch = useDispatch();
+
     const current = useSelector((state: any) => state.current)
+    const access_token = useSelector((state: any) => state.access_token)
 
     const [playlistName, setPlaylistName] = useState(current.name);
     const [playlistDescription, setPlaylistDescription] = useState(current.description);
@@ -24,11 +27,13 @@ const EditPlaylistForm = (props: any) => {
         event.preventDefault();
         if (playlistName.trim().length !== 0) {
             console.log("submitted", playlistName, playlistDescription);
-            props.onSubmitPlaylist({
+            const submitData = {
                 name: playlistName,
                 description: playlistDescription,
                 public: false,
-            });
+            }
+            const data = { access_token, id: current.id, submitData };
+            dispatch({type:'EDIT_FETCH_REQUESTED', payload: data})
             props.onConfirm();
         }
 
