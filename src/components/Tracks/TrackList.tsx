@@ -88,12 +88,16 @@ const TrackList = (props: any) => {
   
       <tr className={classes.header}>
         <th><Button className='selector' onClick={onSortIndexHandler}>#</Button></th>
-        <th><Button className='selector' onClick={onSortTitleHandler}>Title</Button></th>
+        <th></th>
+        <th align='left'><Button className='selector' onClick={onSortTitleHandler}>Title</Button></th>
         <th><Button className='selector' onClick={onSortAlbumHandler}>Album</Button></th>
+        <th><Button className='selector' onClick={onSortIndexHandler}>Added</Button></th>
         <th><Button className='selector' onClick={onSortReleaseHandler}>Release</Button></th>
+        <th><Button className='selector' onClick={onSortReleaseHandler}>Time</Button></th>
+        <th></th>
       </tr>
       {tracks.map((track, index) => (
-        <Track key={index} uri={track.track.uri} name={track.track.name} album={track.track.album} artists={track.track.artists} add={false}/>
+        <Track key={index} index={index} uri={track.track.uri} added={track.added_at} name={track.track.name} album={track.track.album} artists={track.track.artists} time={track.track.duration_ms} add={false}/>
       ))}
     </table>
   );

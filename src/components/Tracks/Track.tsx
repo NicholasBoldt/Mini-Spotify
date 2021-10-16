@@ -10,6 +10,9 @@ interface Track {
     artists: any[];
     add: boolean;
     uri: string
+    index: number
+    added: string
+    time: number
   }
 
 
@@ -28,17 +31,29 @@ const Track = (props:Track) => {
         dispatch({type:'REMOVE_FETCH_REQUESTED', payload: data})
     }
 
+    const time = millisToMinutesAndSeconds(props.time)
+
     return <tr className={classes.track}>
+        <td>{props.index}</td>
         <td><img className={classes.cover} src={props.album.images[0].url} alt='Cover Photo' /></td>
-        <td>
-            <div>{props.name}</div>
+        <td align='left'>
+            <div className={classes.title}>{props.name}</div>
             <div>{props.artists[0].name}</div>
         </td>
         <td>{props.album.name}</td>
+        <td>{props.added.substring(0, 10)}</td>
         <td className={classes.release}>{props.album.release_date}</td>
-        {props.add && <Button onClick={addToPlaylistHandler}>Add</Button>}
-        {!props.add && <Button className='remove' onClick={removeFromPlaylistHandler}>Remove</Button>}
+        <td>{time}</td>
+        <td> {props.add && <Button onClick={addToPlaylistHandler}>Add</Button>}
+        {!props.add && <Button className='remove' onClick={removeFromPlaylistHandler}>Remove</Button>}</td>
+     
     </tr>
 }
+
+function millisToMinutesAndSeconds(millis: number) {
+    var minutes: number = Math.floor(millis / 60000);
+    var seconds: any = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
 
 export default Track;

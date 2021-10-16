@@ -37,11 +37,13 @@
     border: none;
     background: transparent;
     color: black;
+    font-weight: bold;
   }
 
   .selector:hover,
   .selector:active {
     border: none;
+    font-weight: bold;
     background: transparent;
   }
 
