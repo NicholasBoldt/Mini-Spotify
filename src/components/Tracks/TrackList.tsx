@@ -82,6 +82,22 @@ const TrackList = (props: any) => {
     dispatch({type: 'setTracks', payload: sortedTracks})
   }
 
+  const onSortTimeHandler = () => {
+    function sortTime( a: any, b: any ) {
+      if ( a.track.duration_ms < b.track.duration_ms ){
+        return -1;
+      }
+      if ( a.track.duration_ms > b.track.duration_ms ){
+        return 1;
+      }
+      return 0;
+    }
+    const sortedTracks = [...tracks]
+    sortedTracks.sort( sortTime )
+    console.log(tracks)
+    dispatch({type: 'setTracks', payload: sortedTracks})
+  }
+
 
   return (
     <table className={classes.tracklist}>
@@ -93,7 +109,7 @@ const TrackList = (props: any) => {
         <th><Button className='selector' onClick={onSortAlbumHandler}>Album</Button></th>
         <th><Button className='selector' onClick={onSortIndexHandler}>Added</Button></th>
         <th><Button className='selector' onClick={onSortReleaseHandler}>Release</Button></th>
-        <th><Button className='selector' onClick={onSortReleaseHandler}>Time</Button></th>
+        <th><Button className='selector' onClick={onSortTimeHandler}>Time</Button></th>
         <th></th>
       </tr>
       {tracks.map((track, index) => (
