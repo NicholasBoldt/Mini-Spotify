@@ -12,8 +12,8 @@ import { useState } from "react";
 const SearchTrack = (props: any) => {
     const [trackName, setTrackName] = useState('');
     const [results, setResults] = useState('');
-    const access_code = useSelector((state: any) => state.access_code)
-    console.log(access_code)
+    const access_token = useSelector((state: any) => state.access_token)
+    console.log(access_token)
 
     const onChange = (event: any) => {
         setTrackName(event.target.value)
@@ -24,7 +24,7 @@ const SearchTrack = (props: any) => {
         if (trackName.trim().length !== 0) {
             console.log("submitted", );
             console.log(trackName)
-            const searchData = await searchTracks(access_code, trackName)
+            const searchData = await searchTracks(access_token, trackName)
             console.log(searchData)
             setResults(searchData);
         }

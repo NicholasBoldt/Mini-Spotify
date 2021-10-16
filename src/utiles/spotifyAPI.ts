@@ -73,37 +73,48 @@ export const editPlaylist = async (token: string, id: string, editedPlaylist: an
 };
 
 export const searchTracks = async (token: string, trackSearch: string) => {
-  const url = `https://api.spotify.com/v1/search?q=${trackSearch}&type=track&market=US&limit=10&offset=5`;
-  console.log(url)
-  const response = await axios.get(
-    url,
-    {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }
-  );
-  const data: any = response.data;
-  console.log(data)
-  return data;
+  console.log(trackSearch)
+  try {
+    const url = "https://api.spotify.com/v1/search?q=" + trackSearch + "&type=track&market=US&limit=10"
+    console.log(url)
+    const response = await axios.get(
+      url,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    const data: any = response.data;
+    console.log(data)
+    return data;
+  } catch (error) {
+      console.log(error)
+  }
+ 
 };
 
 
 export const addTracks = async (token: string, playlistId: string, track: string) => {
   console.log(track)
-  const response = await axios.post(
-    `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
-    {"uris": [track]},
-    {
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: "Bearer " + token,
-      },
-    }
-  );
-  const data: any = response.data;
-  console.log(data)
-  return data;
+  try {
+    const response = await axios.post(
+      `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+      {"uris": [track]},
+      {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    const data: any = response.data;
+    console.log(data)
+    return data;
+  } catch(error) {
+    console.log(error)
+  }
+  
 };
 
 // export const removeTracks = async (token: string, playlistId: string, track: string) => {

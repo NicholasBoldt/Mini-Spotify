@@ -8,7 +8,6 @@ import {useDispatch, useSelector } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
-  const userId = useSelector((state: any) => state.userId);
   const current = useSelector((state: any) => state.current);
 
   const authURL = getAuthURL();
