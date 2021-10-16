@@ -7,17 +7,14 @@ const SearchList = (props: any) => {
     <div className={classes.tracklist}>
       {props.results &&
         props.results.tracks.items.map((track: any, index: number) => (
-          <div>
-            <Track
-              key={index}
-              uri={track.uri}
-              name={track.name}
-              album={track.album}
-              artists={track.artists}
-              add={true}
-            />
-            
-          </div>
+          <Track
+            key={index}
+            uri={track.uri}
+            name={track.name}
+            album={track.album}
+            artists={track.artists}
+            add={true}
+          />
         ))}
     </div>
   );

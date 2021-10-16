@@ -36,7 +36,7 @@ const Track = (props:Track) => {
         </div>
         <div>{props.album.name}</div>
         <div className={classes.release}>{props.album.release_date}</div>
-        {props.add && <Button onClick={addToPlaylistHandler}>Add to Playlist</Button>}
+        {props.add && <Button onClick={addToPlaylistHandler}>Add</Button>}
         {!props.add && <Button onClick={removeFromPlaylistHandler}>Remove</Button>}
     
     </div>
