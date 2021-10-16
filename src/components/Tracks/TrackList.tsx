@@ -11,8 +11,8 @@ const TrackList = (props: any) => {
 
   return (
     <div className={classes.tracklist}>
-      {tracks.map((track) => (
-        <Track key={track.track.id} onSubmitNewTrack={props.onSubmitNewTrack} uri={track.track.uri} name={track.track.name} album={track.track.album} artists={track.track.artists} add={false}/>
+      {tracks.map((track, index) => (
+        <Track key={index} uri={track.track.uri} name={track.track.name} album={track.track.album} artists={track.track.artists} add={false}/>
       ))}
     </div>
   );

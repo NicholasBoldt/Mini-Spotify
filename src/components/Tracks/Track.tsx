@@ -1,5 +1,6 @@
 import classes from './Track.module.css';
 import Button from '../UI/Button';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 interface Track {
@@ -8,13 +9,17 @@ interface Track {
     artists: any[];
     add: boolean;
     uri: string
-    onSubmitNewTrack: any
   }
 
 
 const Track = (props:Track) => {
+    const dispatch = useDispatch();
+    const access_token = useSelector((state: any) => state.access_token)
+    const current = useSelector((state: any) => state.current)
+
     const addToPlaylistHandler = () => {
-        props.onSubmitNewTrack(props.uri)
+        const data = {access_token, id: current.id, trackURI: props.uri}
+        dispatch({type:'ADD_FETCH_REQUESTED', payload: data})
     }
 
     return <div className={classes.track}>

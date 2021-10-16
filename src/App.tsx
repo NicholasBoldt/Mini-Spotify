@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { getAuthURL } from './auth/spotifyAuth';
 import Dash from './components/Dashboard';
-import { addTracks } from './utiles/spotifyAPI';
 import classes from './App.module.css';
-import {useDispatch, useSelector } from 'react-redux';
+import {useDispatch } from 'react-redux';
 
 
 function App() {
   const dispatch = useDispatch();
-  const current = useSelector((state: any) => state.current);
 
   const authURL = getAuthURL();
   const responseURL = window.location.href
@@ -16,15 +14,6 @@ function App() {
   dispatch({type: "setAccessToken", payload: access_token})
 
   console.log(access_token)
-
-  const addNewTrackHandler = async (trackURI: any) => {
-    if(access_token) {
-      console.log('worked')
-      await addTracks(access_token, current.id, trackURI)
-      dispatch({type:'PLAYLISTS_FETCH_REQUESTED', payload: access_token})
-    }
-  }
-
 
   useEffect(() => {
     if(access_token) {
@@ -35,7 +24,7 @@ function App() {
 
   return (
     <div className={classes.app}>
-      {access_token && <Dash onSubmitNewTrack={addNewTrackHandler}/>}
+      {access_token && <Dash />}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
     </div>
   );

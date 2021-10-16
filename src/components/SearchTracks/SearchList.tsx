@@ -6,16 +6,15 @@ const SearchList = (props: any) => {
   return (
     <div className={classes.tracklist}>
       {props.results &&
-        props.results.tracks.items.map((track: any) => (
+        props.results.tracks.items.map((track: any, index: number) => (
           <div>
             <Track
-              key={track.id}
+              key={index}
               uri={track.uri}
               name={track.name}
               album={track.album}
               artists={track.artists}
               add={true}
-              onSubmitNewTrack={props.onSubmitNewTrack}
             />
             
           </div>
