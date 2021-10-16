@@ -19,11 +19,6 @@ const playlistReducer: any = (state = initialState, action: any) => {
             playlists: action.payload,
         }
     }
-    // if(action.type === 'getPlaylists') {
-    //     return {
-    //         ...state
-    //     }
-    // }
     if(action.type === 'setCurrent') {
         return {
             ...state,
@@ -42,10 +37,10 @@ const playlistReducer: any = (state = initialState, action: any) => {
             userId: action.payload
         }
     }
-    if(action.type === 'setAccessCode') {
+    if(action.type === 'setAccessToken') {
         return {
             ...state,
-            access_code: action.payload,
+            access_token: action.payload,
         }
     }
 

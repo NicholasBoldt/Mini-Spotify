@@ -6,7 +6,7 @@ import React from "react";
 interface SelectorState {
   playlists: any[]
   current: any
-  access_code: string
+  access_token: string
 }
 
 
@@ -14,13 +14,13 @@ const PlaylistSelector = () => {
   const dispatch = useDispatch();
   const playlists = useSelector((state: SelectorState) => state.playlists);
   const current = useSelector((state: SelectorState) => state.current);
-  const access_code = useSelector((state: SelectorState) => state.access_code);
+  const access_token = useSelector((state: SelectorState) => state.access_token);
   console.log(playlists)
 
   const selected = {value: current.id, label: current.name}
 
     const handleChange = (selected: any) => {
-      const data = {access_code, id: selected.value}
+      const data = {access_token, id: selected.value}
       dispatch({ type: 'PLAYLIST_FETCH_REQUESTED', payload: data })
     }
 

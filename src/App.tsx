@@ -14,16 +14,9 @@ function App() {
   const authURL = getAuthURL();
   const responseURL = window.location.href
   const access_token = searchCode('access_token', responseURL)
-  dispatch({type: "setAccessCode", payload: access_token})
+  dispatch({type: "setAccessToken", payload: access_token})
 
   console.log(access_token)
-
-  const createPlaylistHandler = async (submitData: any) => {
-    if(access_token) {
-      await createPlaylist(access_token, userId, submitData)
-      dispatch({type:'PLAYLISTS_FETCH_REQUESTED', payload: access_token})
-    }
-  }
 
   const editPlaylistHandler = async (submitData: any) => {
     if(access_token) {
@@ -40,30 +33,23 @@ function App() {
     }
   }
 
-  // const fetchData = async () => {
-  //   if(access_token) {
-  //     // const playlistsData = await getPlaylists(access_token)
-  //     // dispatch({ type: 'setPlaylists' , payload: playlistsData})
-  //     // const playlistData = await getPlaylist(access_token, playlistsData[0].id);
-  //     // dispatch({ type: 'setCurrent', payload: playlistData})
-  //     // dispatch({ type: 'setTracks', payload: playlistData.tracks.items})
-  //     const userData = await getUser(access_token);
-  //     dispatch({ type: 'setUserId', payload: userData.id})
-  //   }
-  // }
+  const fetchData = async () => {
+    if(access_token) {
+      dispatch({type:'PLAYLISTS_FETCH_REQUESTED', payload: access_token})
+    }
+  }
 
 
   useEffect(() => {
     if(access_token) {
-      dispatch({type:'PLAYLISTS_FETCH_REQUESTED', payload: access_token})
-      // fetchData();
+      fetchData();
     }
   }, [])
 
 
   return (
     <div className={classes.app}>
-      {access_token && <Dash onSubmitNewTrack={addNewTrackHandler} createPlaylistHandler={createPlaylistHandler} editPlaylistHandler={editPlaylistHandler}/>}
+      {access_token && <Dash onSubmitNewTrack={addNewTrackHandler} editPlaylistHandler={editPlaylistHandler}/>}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
     </div>
   );
