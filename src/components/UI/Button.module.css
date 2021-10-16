@@ -6,7 +6,7 @@
     padding: 0.25rem 1rem;
     cursor: pointer;
     border-radius: 20px;
-    transition: all .2s ease-in-out; 
+    /* transition: all .2s ease-in-out;  */
   }
   
   .button:hover,
@@ -20,3 +20,30 @@
     outline: none;
  
   }
+
+  .remove {
+    border: 1px solid grey;
+    background: transparent;
+    color: grey;
+  }
+
+  .remove:hover,
+  .remove:active {
+    border: 1px solid grey;
+    background: transparent;
+  }
+
+  .selector {
+    border: none;
+    background: transparent;
+    color: black;
+  }
+
+  .selector:hover,
+  .selector:active {
+    border: none;
+    background: transparent;
+  }
+
+  
+  

@@ -28,18 +28,17 @@ const Track = (props:Track) => {
         dispatch({type:'REMOVE_FETCH_REQUESTED', payload: data})
     }
 
-    return <div className={classes.track}>
-        <img className={classes.cover} src={props.album.images[0].url} alt='Cover Photo' />
-        <div>
+    return <tr className={classes.track}>
+        <td><img className={classes.cover} src={props.album.images[0].url} alt='Cover Photo' /></td>
+        <td>
             <div>{props.name}</div>
             <div>{props.artists[0].name}</div>
-        </div>
-        <div>{props.album.name}</div>
-        <div className={classes.release}>{props.album.release_date}</div>
+        </td>
+        <td>{props.album.name}</td>
+        <td className={classes.release}>{props.album.release_date}</td>
         {props.add && <Button onClick={addToPlaylistHandler}>Add</Button>}
-        {!props.add && <Button onClick={removeFromPlaylistHandler}>Remove</Button>}
-    
-    </div>
+        {!props.add && <Button className='remove' onClick={removeFromPlaylistHandler}>Remove</Button>}
+    </tr>
 }
 
 export default Track;

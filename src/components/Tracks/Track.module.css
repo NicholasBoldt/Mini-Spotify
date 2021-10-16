@@ -1,20 +1,15 @@
 .track {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-    width: 100%;
-    list-style-type:none;
     border-bottom: 1px solid black;
-    margin-bottom: 10px;
-    font-size: 15px;
+    border-spacing: 0;
+    width: 100%;
 }
 
 .cover {
-    height: 70px;
+    height: 100%;
     width: 70px;
+    display: block;
 }
 
-.release {
+/* .release {
     margin-right: 5px;
-}
+} */

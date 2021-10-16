@@ -1,19 +1,25 @@
-
-
 .tracklist {
-    width: 80%;
-    text-align: center;
-    margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-
+/* 
 .header {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-}
+} */
 
 .tracks {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+/* .selector {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font: inhert;
+} */
