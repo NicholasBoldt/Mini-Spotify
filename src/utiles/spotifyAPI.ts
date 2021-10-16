@@ -117,26 +117,24 @@ export const addTracks = async (token: string, playlistId: string, track: string
   
 };
 
-// export const removeTracks = async (token: string, playlistId: string, track: string) => {
-//   const body = {
-//     "tracks": [
-//       {
-//         "uri": "spotify:track:7MDKvOzNgAJ3KMCtaP2UOa"
-//       }
-//     ]
-//   }
-//   // const response = await axios.delete(
-//   //   `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
-//   //   {
-//   //     headers: {
-//   //       Authorization: "Bearer " + token,
-//   //     }
-//   //   },
-//   // );
-//   const data: any = response.data;
-//   console.log(data)
-//   return data;
-// };
+export const removeTracks = async (token: string, playlistId: string, track: string) => {
+  const tracks = {
+    "tracks": [
+      {
+        "uri": track
+      }
+    ]
+  }
+  await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+    method:'DELETE',
+    headers: {
+      'Content-Type':'application/json',
+        Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify(tracks)
+    })
+
+};
 
 
 

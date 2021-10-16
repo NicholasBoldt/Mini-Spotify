@@ -1,6 +1,7 @@
 import classes from './Track.module.css';
 import Button from '../UI/Button';
 import { useSelector, useDispatch } from 'react-redux';
+import { removeTracks } from '../../utiles/spotifyAPI';
 
 
 interface Track {
@@ -22,6 +23,11 @@ const Track = (props:Track) => {
         dispatch({type:'ADD_FETCH_REQUESTED', payload: data})
     }
 
+    const removeFromPlaylistHandler = () => {
+        const data = {access_token, id: current.id, trackURI: props.uri}
+        dispatch({type:'REMOVE_FETCH_REQUESTED', payload: data})
+    }
+
     return <div className={classes.track}>
         <img className={classes.cover} src={props.album.images[0].url} alt='Cover Photo' />
         <div>
@@ -31,6 +37,7 @@ const Track = (props:Track) => {
         <div>{props.album.name}</div>
         <div className={classes.release}>{props.album.release_date}</div>
         {props.add && <Button onClick={addToPlaylistHandler}>Add to Playlist</Button>}
+        {!props.add && <Button onClick={removeFromPlaylistHandler}>Remove</Button>}
     
     </div>
 }

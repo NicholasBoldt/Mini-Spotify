@@ -13,8 +13,6 @@ function App() {
   const access_token = searchCode('access_token', responseURL)
   dispatch({type: "setAccessToken", payload: access_token})
 
-  console.log(access_token)
-
   useEffect(() => {
     if(access_token) {
       dispatch({type:'PLAYLISTS_FETCH_REQUESTED', payload: access_token})
