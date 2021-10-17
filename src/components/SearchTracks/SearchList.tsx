@@ -4,7 +4,6 @@ import Button from "../UI/Button";
 
 const SearchList = (props: any) => {
   return (
-      <div></div>
     // <div className={classes.tracklist}>
     //   {props.results &&
     //     props.results.tracks.items.map((track: any, index: number) => (
@@ -20,6 +19,12 @@ const SearchList = (props: any) => {
     //       />
     //     ))}
     // </div>
+    <table className={classes.tracklist}>
+  
+    {props.results && props.results.tracks.items.map((track: any, index: any) => (
+      <Track key={index} index={index} uri={track.uri} added={''} name={track.name} album={track.album} artists={track.artists} time={track.duration_ms} add={true}/>
+    ))}
+    </table>
   );
 };
 

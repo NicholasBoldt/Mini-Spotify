@@ -48,7 +48,6 @@ const SearchTrack = (props: any) => {
         </form>
         {results && (
           <SearchList
-            onSubmitNewTrack={props.onSubmitNewTrack}
             results={results}
           />
         )}
