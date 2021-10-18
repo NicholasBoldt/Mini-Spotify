@@ -20,10 +20,22 @@ const SearchList = (props: any) => {
     //     ))}
     // </div>
     <table className={classes.tracklist}>
-  
-    {props.results && props.results.tracks.items.map((track: any, index: any) => (
-      <Track key={index} index={index} uri={track.uri} added={''} name={track.name} album={track.album} artists={track.artists} time={track.duration_ms} add={true}/>
-    ))}
+       
+      {props.results &&
+        props.results.tracks.items.map((track: any, index: any) => (
+          <Track
+            key={index}
+            index={index}
+            uri={track.uri}
+            added={""}
+            name={track.name}
+            album={track.album}
+            artists={track.artists}
+            time={track.duration_ms}
+            add={true}
+            search={true}
+          />
+        ))}
     </table>
   );
 };

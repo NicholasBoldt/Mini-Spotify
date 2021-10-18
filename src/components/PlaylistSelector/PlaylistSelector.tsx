@@ -12,9 +12,9 @@ interface SelectorState {
 
 const PlaylistSelector = () => {
   const dispatch = useDispatch();
-  const playlists = useSelector((state: SelectorState) => state.playlists);
-  const current = useSelector((state: SelectorState) => state.current);
-  const access_token = useSelector((state: SelectorState) => state.access_token);
+  const playlists = useSelector((state: any) => state.playlists.playlists);
+  const current = useSelector((state: any) => state.playlists.current);
+  const access_token = useSelector((state: any) => state.playlists.access_token);
   console.log(playlists)
 
   const selected = {value: current.id, label: current.name}
@@ -24,7 +24,7 @@ const PlaylistSelector = () => {
       dispatch({ type: 'PLAYLIST_FETCH_REQUESTED', payload: data })
     }
 
-    const options: Array<any> = playlists.map((playlist) => (
+    const options: Array<any> = playlists.map((playlist: any) => (
         {value: playlist.id, label: playlist.name}
     ))
   

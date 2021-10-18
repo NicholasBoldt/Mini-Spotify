@@ -11,8 +11,8 @@
   
   .button:hover,
   .button:active {
-    background: #1DB954;
-    border-color: #1DB954;
+    background: #1ED761;
+    border-color: #1ED761;
     transform: scale(1.05)
   }
   

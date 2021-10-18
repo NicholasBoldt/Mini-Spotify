@@ -11,7 +11,7 @@ import SearchTrack from "./SearchTracks/SearchTracks";
 
 
 const Dashboard = (props: any) => {
-    const current = useSelector((state: any) => state.current);
+    const current = useSelector((state: any) => state.playlists.current);
     const [create, setCreate] = useState(false);
     const [edit, setEdit] = useState(false);
     const [search, setSearch] = useState(false);
@@ -39,6 +39,9 @@ const Dashboard = (props: any) => {
         {create && <CreatePlaylistForm onConfirm={confirmHandler} />}
         {edit && <EditPlaylistForm onConfirm={confirmHandler} />}
         {search && <SearchTrack  onConfirm={confirmHandler}/>}
+        <header className={classes.header}>
+            <h1 className={classes.title}>Mini-Spotify</h1>
+        </header>
         <div className={classes.options}>
             <Button onClick={searchHandler}>Search</Button>
             <Button onClick={editHandler}>Edit</Button>

@@ -78,7 +78,7 @@ function* fetchRemoveTrack(action) {
    }
 }
 
- function* mySaga() {
+ function* spotifySaga() {
     yield takeEvery("PLAYLISTS_FETCH_REQUESTED", fetchData);
     yield takeEvery("PLAYLIST_FETCH_REQUESTED", fetchPlaylist);
     yield takeEvery("CREATE_FETCH_REQUESTED", fetchCreatePlaylist);
@@ -87,4 +87,4 @@ function* fetchRemoveTrack(action) {
     yield takeEvery("REMOVE_FETCH_REQUESTED", fetchRemoveTrack);
   }
 
-  export default mySaga;
+  export default spotifySaga;

@@ -8,8 +8,8 @@ import { useSelector, useDispatch } from "react-redux";
 const EditPlaylistForm = (props: any) => {
     const dispatch = useDispatch();
 
-    const current = useSelector((state: any) => state.current)
-    const access_token = useSelector((state: any) => state.access_token)
+    const current = useSelector((state: any) => state.playlists.current)
+    const access_token = useSelector((state: any) => state.playlists.access_token)
 
     const [playlistName, setPlaylistName] = useState(current.name);
     const [playlistDescription, setPlaylistDescription] = useState(current.description);

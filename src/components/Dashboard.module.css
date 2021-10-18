@@ -10,6 +10,22 @@
     outline: inherit;
   } */
 
+  .header {
+    width: 100%;
+    background-color: #1DB954;
+    color: white;
+    margin-top: 0;
+    height: 50px;
+  }
+
+  .title {
+    text-align: left;
+    vertical-align: center;
+    margin: 0;
+    padding: 5px;
+    margin-left: 20px;
+  }
+
   .options {
     display: flex;
     justify-content: center;

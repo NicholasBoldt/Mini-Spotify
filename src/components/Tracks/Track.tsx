@@ -13,13 +13,14 @@ interface Track {
     index: number
     added: string
     time: number
+    search: boolean
   }
 
 
 const Track = (props:Track) => {
     const dispatch = useDispatch();
-    const access_token = useSelector((state: any) => state.access_token)
-    const current = useSelector((state: any) => state.current)
+    const access_token = useSelector((state: any) => state.playlists.access_token)
+    const current = useSelector((state: any) => state.playlists.current)
 
     const addToPlaylistHandler = () => {
         const data = {access_token, id: current.id, trackURI: props.uri}
@@ -41,9 +42,9 @@ const Track = (props:Track) => {
             <div>{props.artists[0].name}</div>
         </td>
         <td>{props.album.name}</td>
-        <td>{props.added.substring(0, 10)}</td>
-        <td className={classes.release}>{props.album.release_date}</td>
-        <td>{time}</td>
+        {!props.search && <td>{props.added.substring(0, 10)}</td>}
+        {!props.search && <td className={classes.release}>{props.album.release_date}</td>}
+        {!props.search && <td>{time}</td>}
         <td> {props.add && <Button onClick={addToPlaylistHandler}>Add</Button>}
         {!props.add && <Button className='remove' onClick={removeFromPlaylistHandler}>Remove</Button>}</td>
      

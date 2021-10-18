@@ -4,6 +4,17 @@ import Dash from './components/Dashboard';
 import classes from './App.module.css';
 import {useDispatch } from 'react-redux';
 
+const searchCode = (name: string, url = '') => {
+  const results = new RegExp("[#&]" + name + "=([^&#]*)").exec(
+    url || window.location.href
+  );
+
+  if (results == null) {
+    return null;
+  } else {
+    return results[1];
+  }
+};
 
 function App() {
   const dispatch = useDispatch();
@@ -23,21 +34,12 @@ function App() {
   return (
     <div className={classes.app}>
       {access_token && <Dash />}
+      {!access_token && <h1 className={classes.title}>Mini-Spotify</h1>}
       {!access_token && <a className={classes.authorize} href={authURL}>Authorise Spotify</a>}
     </div>
   );
 }
 
-const searchCode = (name: string, url = '') => {
-  const results = new RegExp("[#&]" + name + "=([^&#]*)").exec(
-    url || window.location.href
-  );
 
-  if (results == null) {
-    return null;
-  } else {
-    return results[1];
-  }
-};
 
 export default App;

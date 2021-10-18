@@ -8,8 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 const CreatePlaylistForm = (props: any) => {
   const dispatch = useDispatch();
 
-  const userId = useSelector((state: any) => state.userId);
-  const access_token = useSelector((state: any) => state.access_token);
+  const userId = useSelector((state: any) => state.playlists.userId);
+  const access_token = useSelector((state: any) => state.playlists.access_token);
 
   const [playlistName, setPlaylistName] = useState("");
   const [playlistDescription, setPlaylistDescription] = useState("");

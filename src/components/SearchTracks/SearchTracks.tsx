@@ -9,7 +9,7 @@ import { useState } from "react";
 const SearchTrack = (props: any) => {
   const [trackName, setTrackName] = useState("");
   const [results, setResults] = useState("");
-  const access_token = useSelector((state: any) => state.access_token);
+  const access_token = useSelector((state: any) => state.playlists.access_token);
   console.log(access_token);
 
   const onChange = (event: any) => {
