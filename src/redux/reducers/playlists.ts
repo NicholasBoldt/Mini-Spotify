@@ -8,7 +8,6 @@ const initialState: { access_code: string, playlists: any[], current: any, track
 
 const playlistReducer: any = (state = initialState, action: any) => {
     if(action.type === 'setPlaylists') {
-        console.log(action.payload)
         return {
             ...state,
             playlists: action.payload,

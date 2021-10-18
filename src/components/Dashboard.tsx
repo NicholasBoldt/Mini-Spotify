@@ -1,7 +1,7 @@
 import PlaylistSelector from "./PlaylistSelector/PlaylistSelector";
 import TrackList from "./Tracks/TrackList";
 import classes from './Dashboard.module.css'
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import CreatePlaylistForm from "./CreateOrEditPlaylist/CreatePlaylistForm";
 import EditPlaylistForm from "./CreateOrEditPlaylist/EditPlaylistForm";
@@ -11,34 +11,28 @@ import SearchTrack from "./SearchTracks/SearchTracks";
 
 
 const Dashboard = (props: any) => {
+    const dispatch = useDispatch();
     const current = useSelector((state: any) => state.playlists.current);
-    const [create, setCreate] = useState(false);
-    const [edit, setEdit] = useState(false);
-    const [search, setSearch] = useState(false);
+    const create = useSelector((state: any) => state.ui.create);
+    const edit = useSelector((state: any) => state.ui.edit);
+    const search = useSelector((state: any) => state.ui.search);
 
     const createHandler = () => {
-        setCreate(true);
+        dispatch({type: 'setCreate'})
     }
 
     const editHandler = () => {
-        setEdit(true);
+        dispatch({type: 'setEdit'})
     }
 
     const searchHandler = () => {
-        setSearch(true);
+        dispatch({type: 'setSearch'})
     }
-
-    const confirmHandler = () => {
-        setCreate(false);
-        setEdit(false);
-        setSearch(false);
-    }
-
 
     return <div className={classes.dashboard}>
-        {create && <CreatePlaylistForm onConfirm={confirmHandler} />}
-        {edit && <EditPlaylistForm onConfirm={confirmHandler} />}
-        {search && <SearchTrack  onConfirm={confirmHandler}/>}
+        {create && <CreatePlaylistForm />}
+        {edit && <EditPlaylistForm />}
+        {search && <SearchTrack />}
         <header className={classes.header}>
             <h1 className={classes.title}>Mini-Spotify</h1>
         </header>

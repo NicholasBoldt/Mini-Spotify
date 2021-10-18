@@ -34,14 +34,18 @@ const EditPlaylistForm = (props: any) => {
             }
             const data = { access_token, id: current.id, submitData };
             dispatch({type:'EDIT_FETCH_REQUESTED', payload: data})
-            props.onConfirm();
+            dispatch({ type: 'setClose' });
         }
 
     };
 
+    const closeHandler = () => {
+        dispatch({ type: 'setClose' });
+    }
+
     return (
         <div>
-            <div className={classes.backdrop} onClick={props.onConfirm}></div>
+            <div className={classes.backdrop} onClick={closeHandler}></div>
             <Card className={classes.modal}>
             <header className={classes.header}><h2>Edit {current.name}</h2></header>
                 <form onSubmit={submitHandler}>

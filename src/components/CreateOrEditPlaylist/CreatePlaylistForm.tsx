@@ -34,13 +34,17 @@ const CreatePlaylistForm = (props: any) => {
       const data = { access_token, userId, submitData };
 
       dispatch({ type: "CREATE_FETCH_REQUESTED", payload: data });
-      props.onConfirm();
+      dispatch({ type: 'setClose' });
     }
   };
 
+  const closeHandler = () => {
+    dispatch({ type: 'setClose' });
+  }
+
   return (
     <div>
-      <div className={classes.backdrop} onClick={props.onConfirm}></div>
+      <div className={classes.backdrop} onClick={closeHandler}></div>
       <Card className={classes.modal}>
         <header className={classes.header}>
           <h2>Create a Playlist</h2>

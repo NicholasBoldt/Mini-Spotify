@@ -1,12 +1,13 @@
 import Card from "../UI/Card";
 import { searchTracks } from "../../utiles/spotifyAPI";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import SearchList from "./SearchList";
 import classes from "./SearchTracks.module.css";
 import Button from "../UI/Button";
 import { useState } from "react";
 
 const SearchTrack = (props: any) => {
+  const dispatch = useDispatch();
   const [trackName, setTrackName] = useState("");
   const [results, setResults] = useState("");
   const access_token = useSelector((state: any) => state.playlists.access_token);
@@ -27,9 +28,13 @@ const SearchTrack = (props: any) => {
     }
   };
 
+  const closeHandler = () => {
+    dispatch({ type: 'setClose' });
+  }
+
   return (
     <div>
-      <div className={classes.backdrop} onClick={props.onConfirm}></div>
+      <div className={classes.backdrop} onClick={closeHandler}></div>
       <Card className={classes.modal}>
         <header className={classes.header}>
           <h2>Search for a Title</h2>
@@ -43,7 +48,7 @@ const SearchTrack = (props: any) => {
             <Button type="submit">Search</Button>
           </div>
           <div>
-            <Button onClick={props.onConfirm}>Close</Button>
+            <Button onClick={closeHandler}>Close</Button>
           </div>
         </form>
         {results && (
