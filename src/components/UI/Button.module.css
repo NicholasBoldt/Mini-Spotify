@@ -47,5 +47,18 @@
     background: transparent;
   }
 
+  .selector_dark {
+    border: none;
+    background: transparent;
+    color: white;
+    font-weight: bold;
+  }
+
+  .selector_dark:hover,
+  .selector_dark:active {
+    border: none;
+    font-weight: bold;
+    background: transparent;
+  }
   
   

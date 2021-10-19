@@ -1,5 +1,7 @@
 .app {
   text-align: center;
+  height: 100%;
+  min-height: 100vh;
 }
 
 .title {
@@ -23,4 +25,9 @@
     background: #1DB954;
     border-color: #1DB954;
     transform: scale(1.1)
+}
+
+.dark {
+  background-color: #121212;
+  color: white;
 }

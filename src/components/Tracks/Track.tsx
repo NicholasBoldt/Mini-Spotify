@@ -20,6 +20,7 @@ const Track = (props:Track) => {
     const dispatch = useDispatch();
     const access_token = useSelector((state: any) => state.playlists.access_token)
     const current = useSelector((state: any) => state.playlists.current)
+    const dark = useSelector((state: any) => state.ui.dark)
 
     const addToPlaylistHandler = () => {
         const data = {access_token, id: current.id, trackURI: props.uri}
@@ -33,7 +34,7 @@ const Track = (props:Track) => {
 
     const time = millisToMinutesAndSeconds(props.time)
 
-    return <tr className={classes.track}>
+    return <tr className={!dark? classes.track : `${classes.track} ${classes.dark}`}>
         <td>{props.index}</td>
         <td><img className={classes.cover} src={props.album.images[0].url} alt='Cover Photo' /></td>
         <td align='left'>

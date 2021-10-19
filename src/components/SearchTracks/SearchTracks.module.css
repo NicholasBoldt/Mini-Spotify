@@ -37,6 +37,11 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  .dark {
+    background-color: #121212;
+    color: white;
+  }
   
   @media (min-width: 768px) {
     .modal {

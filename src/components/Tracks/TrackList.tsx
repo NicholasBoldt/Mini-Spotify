@@ -17,6 +17,8 @@ const TrackList = (props: any) => {
     (state: any) => state.playlists.access_token
   );
 
+  const dark = useSelector((state: any) => state.ui.dark);
+
   const tracks = useSelector((state: any) => state.playlists.tracks);
 
   const onSortTitleHandler = () => {
@@ -101,35 +103,35 @@ const TrackList = (props: any) => {
 
   return (
     <table className={classes.tracklist}>
-      <tr className={classes.header}>
+      <tr className={dark && classes.dark}>
         <th>
-          <Button className="selector" onClick={onSortIndexHandler}>
+          <Button className={!dark ? 'selector' : 'selector_dark'} onClick={onSortIndexHandler}>
             #
           </Button>
         </th>
         <th></th>
         <th align="left">
-          <Button className="selector" onClick={onSortTitleHandler}>
+          <Button className={!dark ? 'selector' : 'selector_dark'} onClick={onSortTitleHandler}>
             Title
           </Button>
         </th>
         <th>
-          <Button className="selector" onClick={onSortAlbumHandler}>
+          <Button className={!dark ? 'selector' : 'selector_dark'} onClick={onSortAlbumHandler}>
             Album
           </Button>
         </th>
         <th>
-          <Button className="selector" onClick={onSortIndexHandler}>
+          <Button className={!dark ? 'selector' : 'selector_dark'} onClick={onSortIndexHandler}>
             Added
           </Button>
         </th>
         <th>
-          <Button className="selector" onClick={onSortReleaseHandler}>
+          <Button className={!dark ? 'selector' : 'selector_dark'} onClick={onSortReleaseHandler}>
             Release
           </Button>
         </th>
         <th>
-          <Button className="selector" onClick={onSortTimeHandler}>
+          <Button className={!dark ? 'selector' : 'selector_dark'} onClick={onSortTimeHandler}>
             Time
           </Button>
         </th>

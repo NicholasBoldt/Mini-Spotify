@@ -38,18 +38,6 @@ const PlaylistSelector = () => {
         options={options}
       />
     </div>
-    
-    // <form>
-    //   <label>
-    //     Select a Playlist:
-    //     <select onChange={handleChange}>
-    //         {props.playlists.map((playlist) => (
-    //              <option key={playlist.id} value={playlist.id}>{playlist.name}</option>
-    //         ))}
-    //     </select>
-    //   </label>
-     
-    // </form>
   );
 };
 

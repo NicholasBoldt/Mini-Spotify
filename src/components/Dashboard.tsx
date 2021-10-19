@@ -16,6 +16,7 @@ const Dashboard = (props: any) => {
     const create = useSelector((state: any) => state.ui.create);
     const edit = useSelector((state: any) => state.ui.edit);
     const search = useSelector((state: any) => state.ui.search);
+    const dark = useSelector((state: any) => state.ui.dark);
 
     const createHandler = () => {
         dispatch({type: 'setCreate'})
@@ -29,12 +30,17 @@ const Dashboard = (props: any) => {
         dispatch({type: 'setSearch'})
     }
 
+    const darkHandler = () => {
+        dispatch({type: 'setDark'})
+    }
+
     return <div className={classes.dashboard}>
         {create && <CreatePlaylistForm />}
         {edit && <EditPlaylistForm />}
         {search && <SearchTrack />}
-        <header className={classes.header}>
+        <header className={!dark ? classes.header : `${classes.header} ${classes.dark}`}>
             <h1 className={classes.title}>Mini-Spotify</h1>
+            <div className={classes.dark_button} onClick={darkHandler}>Dark Mode</div>
         </header>
         <div className={classes.options}>
             <Button onClick={searchHandler}>Search</Button>

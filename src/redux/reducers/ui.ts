@@ -1,7 +1,8 @@
-const initialState: { create: boolean, edit: boolean, search: boolean} = { 
+const initialState: { create: boolean, edit: boolean, search: boolean, dark: boolean} = { 
     create: false,
     edit: false,
-    search: false
+    search: false,
+    dark: false
 };
 
 const uiReducer: any = (state = initialState, action: any) => {
@@ -9,28 +10,38 @@ const uiReducer: any = (state = initialState, action: any) => {
         return {
             create: true,
             edit: false,
-            search: false
+            search: false,
+            dark: state.dark
         }
     }
     if(action.type === 'setEdit') {
         return {
             create: false,
             edit: true,
-            search: false
+            search: false,
+            dark: state.dark
         }
     }
     if(action.type === 'setSearch') {
         return {
             create: false,
             edit: false,
-            search: true
+            search: true,
+            dark: state.dark
         }
     }
     if(action.type === 'setClose') {
         return {
             create: false,
             edit: false,
-            search: false
+            search: false,
+            dark: state.dark
+        }
+    }
+    if(action.type === 'setDark') {
+        return {
+            ...state,
+            dark: !state.dark
         }
     }
 

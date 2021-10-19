@@ -11,6 +11,8 @@ const SearchTrack = (props: any) => {
   const [trackName, setTrackName] = useState("");
   const [results, setResults] = useState("");
   const access_token = useSelector((state: any) => state.playlists.access_token);
+  const dark = useSelector((state: any) => state.ui.dark);
+
   console.log(access_token);
 
   const onChange = (event: any) => {
@@ -39,7 +41,7 @@ const SearchTrack = (props: any) => {
         <header className={classes.header}>
           <h2>Search for a Title</h2>
         </header>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} className={!dark ? classes.content : `${classes.content} ${classes.dark}`}>
           <div>
             <label>Track Name</label>
             <input value={trackName} onChange={onChange}></input>
