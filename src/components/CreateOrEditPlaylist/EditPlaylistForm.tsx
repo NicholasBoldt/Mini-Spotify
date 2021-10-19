@@ -11,6 +11,8 @@ const EditPlaylistForm = (props: any) => {
     const current = useSelector((state: any) => state.playlists.current)
     const access_token = useSelector((state: any) => state.playlists.access_token)
 
+    const dark = useSelector((state: any) => state.ui.dark)
+
     const [playlistName, setPlaylistName] = useState(current.name);
     const [playlistDescription, setPlaylistDescription] = useState(current.description);
 
@@ -48,7 +50,7 @@ const EditPlaylistForm = (props: any) => {
             <div className={classes.backdrop} onClick={closeHandler}></div>
             <Card className={classes.modal}>
             <header className={classes.header}><h2>Edit {current.name}</h2></header>
-                <form onSubmit={submitHandler}>
+                <form className={dark && classes.dark} onSubmit={submitHandler}>
                     <div>
                         <label>Playlist Name</label>
                         <input value={playlistName} onChange={onNameChange}></input>

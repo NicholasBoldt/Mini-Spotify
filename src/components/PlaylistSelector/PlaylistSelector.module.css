@@ -1,3 +1,8 @@
 .selector { 
     width: 200px;
 }
+
+.dark {
+    /* background-color: #1f1f1f; */
+    color: black;
+  }

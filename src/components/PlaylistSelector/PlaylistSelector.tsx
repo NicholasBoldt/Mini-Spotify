@@ -15,7 +15,8 @@ const PlaylistSelector = () => {
   const playlists = useSelector((state: any) => state.playlists.playlists);
   const current = useSelector((state: any) => state.playlists.current);
   const access_token = useSelector((state: any) => state.playlists.access_token);
-  console.log(playlists)
+  const dark = useSelector((state: any) => state.ui.dark);
+
 
   const selected = {value: current.id, label: current.name}
 
@@ -32,7 +33,7 @@ const PlaylistSelector = () => {
   return (
     <div>
         <Select
-        className={classes.selector}
+        className={!dark ? classes.selector : `${classes.selector} ${classes.dark}`}
         value={selected}
         onChange={handleChange}
         options={options}

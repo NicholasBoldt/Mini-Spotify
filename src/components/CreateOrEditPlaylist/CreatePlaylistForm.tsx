@@ -10,6 +10,7 @@ const CreatePlaylistForm = (props: any) => {
 
   const userId = useSelector((state: any) => state.playlists.userId);
   const access_token = useSelector((state: any) => state.playlists.access_token);
+  const dark = useSelector((state: any) => state.ui.dark);
 
   const [playlistName, setPlaylistName] = useState("");
   const [playlistDescription, setPlaylistDescription] = useState("");
@@ -49,7 +50,7 @@ const CreatePlaylistForm = (props: any) => {
         <header className={classes.header}>
           <h2>Create a Playlist</h2>
         </header>
-        <form onSubmit={submitHandler}>
+        <form className={dark && classes.dark}onSubmit={submitHandler}>
           <div>
             <label>Playlist Name</label>
             <input onChange={onNameChange}></input>
