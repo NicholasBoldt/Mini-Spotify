@@ -42,15 +42,12 @@ const SearchTrack = (props: any) => {
           <h2>Search for a Title</h2>
         </header>
         <form onSubmit={submitHandler} className={!dark ? classes.content : `${classes.content} ${classes.dark}`}>
-          <div>
-            <label>Track Name</label>
-            <input value={trackName} onChange={onChange}></input>
-          </div>
-          <div>
-            <Button type="submit">Search</Button>
-          </div>
-          <div>
-            <Button onClick={closeHandler}>Close</Button>
+          <div className={classes.inputs}>
+            <input value={trackName} placeholder={'Search for a Track'} onChange={onChange}></input>
+            <Button className='search' type="submit">Search</Button>
+          </div>  
+          <div className={classes.return}>
+          <Button className={'remove'}onClick={closeHandler}>Go Back</Button>
           </div>
         </form>
         {results && (

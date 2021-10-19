@@ -29,19 +29,38 @@
   }
   
   .content {
+    display: flex;
+    justify-content: space-between;
     padding: 1rem;
+
+  }
+
+  .inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
-  .actions {
-    padding: 1rem;
-    display: flex;
-    justify-content: flex-end;
+  .inputs input {
+    font: inherit;
+    padding: 5px;
+    border-radius: 6px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: 1px solid #ccc;
+    width: 20rem;
+    max-width: 100%;
+  }
+  
+  .return {
+    text-align: left;
   }
 
   .dark {
     background-color: #1f1f1f;
     color: white;
   }
+
   
   @media (min-width: 768px) {
     .modal {
