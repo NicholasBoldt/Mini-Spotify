@@ -30,11 +30,30 @@
   .content {
     padding: 1rem;
   }
+
+  .inputs {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  
+  .inputs input {
+    font: inherit;
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 20rem;
+  }
+  .inputs label  {
+    font: inherit;
+    font-weight: bold;
+    margin: 5px;
+  }
   
   .actions {
-    padding: 1rem;
+    margin-top: 5px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
   }
 
   .dark {

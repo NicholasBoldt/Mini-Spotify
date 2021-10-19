@@ -9,7 +9,9 @@ const CreatePlaylistForm = (props: any) => {
   const dispatch = useDispatch();
 
   const userId = useSelector((state: any) => state.playlists.userId);
-  const access_token = useSelector((state: any) => state.playlists.access_token);
+  const access_token = useSelector(
+    (state: any) => state.playlists.access_token
+  );
   const dark = useSelector((state: any) => state.ui.dark);
 
   const [playlistName, setPlaylistName] = useState("");
@@ -35,13 +37,13 @@ const CreatePlaylistForm = (props: any) => {
       const data = { access_token, userId, submitData };
 
       dispatch({ type: "CREATE_FETCH_REQUESTED", payload: data });
-      dispatch({ type: 'setClose' });
+      dispatch({ type: "setClose" });
     }
   };
 
   const closeHandler = () => {
-    dispatch({ type: 'setClose' });
-  }
+    dispatch({ type: "setClose" });
+  };
 
   return (
     <div>
@@ -50,17 +52,24 @@ const CreatePlaylistForm = (props: any) => {
         <header className={classes.header}>
           <h2>Create a Playlist</h2>
         </header>
-        <form className={dark && classes.dark}onSubmit={submitHandler}>
-          <div>
-            <label>Playlist Name</label>
-            <input onChange={onNameChange}></input>
+        <form
+          className={
+            !dark ? classes.content : `${classes.content} ${classes.dark}`
+          }
+          onSubmit={submitHandler}>
+          <div className={classes.inputs}>
+            <div>
+              <label>Playlist Name:</label>
+              <input onChange={onNameChange}></input>
+            </div>
+            <div>
+              <label>Playlist Description:</label>
+              <input onChange={onDescriptionChange}></input>
+            </div>
           </div>
-          <div>
-            <label>Playlist Description</label>
-            <input onChange={onDescriptionChange}></input>
-          </div>
-          <div>
-            <Button type="submit">Submit</Button>
+          <div className={classes.actions}>
+            <Button className="remove" onClick={closeHandler} >Go Back</Button>
+            <Button type="submit" >Submit</Button>
           </div>
         </form>
       </Card>
