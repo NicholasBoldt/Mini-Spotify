@@ -8,6 +8,8 @@ import EditPlaylistForm from "./CreateOrEditPlaylist/EditPlaylistForm";
 import Button from "./UI/Button";
 import React from "react";
 import SearchTrack from "./SearchTracks/SearchTracks";
+import { BsFillMoonFill } from 'react-icons/bs'
+import { BsFillSunFill } from 'react-icons/bs'
 
 
 const Dashboard = (props: any) => {
@@ -40,7 +42,7 @@ const Dashboard = (props: any) => {
         {search && <SearchTrack />}
         <header className={!dark ? classes.header : `${classes.header} ${classes.dark}`}>
             <h1 className={classes.title}>Mini-Spotify</h1>
-            <div className={classes.dark_button} onClick={darkHandler}>Dark Mode</div>
+<div className={classes.dark_button} onClick={darkHandler}>{!dark ? <BsFillMoonFill/> : <BsFillSunFill/>}</div>
         </header>
         <div className={classes.options}>
             <Button onClick={searchHandler}>Search</Button>
