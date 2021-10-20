@@ -19,6 +19,7 @@ const EditPlaylistForm = (props: any) => {
   const [playlistDescription, setPlaylistDescription] = useState(
     current.description
   );
+  const [error, setError] = useState('');
 
   const onNameChange = (event: any) => {
     setPlaylistName(event.target.value);
@@ -30,8 +31,14 @@ const EditPlaylistForm = (props: any) => {
 
   const submitHandler = (event: any) => {
     event.preventDefault();
-    if (playlistName.trim().length !== 0) {
-      console.log("submitted", playlistName, playlistDescription);
+    if (playlistName.trim().length === 0) {
+        setError('Playlist name must not be empty!')
+        return;
+    }
+    if(playlistDescription.trim().length > 200) {
+        setError('Description must be less than 200 characters!');
+        return;
+    }
       const submitData = {
         name: playlistName,
         description: playlistDescription,
@@ -40,7 +47,6 @@ const EditPlaylistForm = (props: any) => {
       const data = { access_token, id: current.id, submitData };
       dispatch({ type: "EDIT_FETCH_REQUESTED", payload: data });
       dispatch({ type: "setClose" });
-    }
   };
 
   const closeHandler = () => {
@@ -70,6 +76,7 @@ const EditPlaylistForm = (props: any) => {
               <input value={playlistDescription} onChange={onDescriptionChange}></input>
             </div>
           </div>
+          <p className={classes.error}>{error}</p>
           <div className={classes.actions}>
             <Button className="remove" onClick={closeHandler}>Go Back</Button>
             <Button type="submit" >Submit</Button>
