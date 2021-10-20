@@ -1,11 +1,10 @@
 .tracklist {
-  width: 80%;
+  width: 100%;
   text-align: center;
   margin: 0 auto;
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 
 .tracks {
   display: flex;
@@ -13,9 +12,3 @@
   align-items: center;
 }
 
-/* .selector {
-  border: none;
-  background-color: transparent;
-  outline: none;
-  font: inhert;
-} */
