@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div className={!dark ? classes.app : `${classes.app} ${classes.dark}`}>
-      {access_token && <header className={!dark ? classes.header : `${classes.header} ${classes.dark}`}>
+      {access_token && <header className={!dark ? classes.header : `${classes.header} ${classes.header_dark}`}>
         <h1 className={classes.title}>Mini-Spotify</h1>
         <div className={classes.dark_button} onClick={darkHandler}>
           {!dark ? <BsFillMoonFill /> : <BsFillSunFill />}

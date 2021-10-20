@@ -63,11 +63,11 @@ const EditPlaylistForm = (props: any) => {
           <div className={classes.inputs}>
             <div>
               <label>Playlist Name:</label>
-              <input value={current.name} onChange={onNameChange}></input>
+              <input value={playlistName} onChange={onNameChange}></input>
             </div>
             <div>
               <label>Playlist Description:</label>
-              <input value={current.description} onChange={onDescriptionChange}></input>
+              <input value={playlistDescription} onChange={onDescriptionChange}></input>
             </div>
           </div>
           <div className={classes.actions}>
