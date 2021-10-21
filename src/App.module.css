@@ -37,11 +37,10 @@
   font-weight: bold;
 }
 
-
 .authorize {
   margin-top: 500px;
   text-decoration: none;
-  background-color: #1DB954;
+  background-color: #1db954;
   color: white;
   border-radius: 500px;
   padding: 14px 32px;
@@ -51,9 +50,9 @@
 }
 
 .authorize:hover {
-    background: #1DB954;
-    border-color: #1DB954;
-    transform: scale(1.1)
+  background: #1db954;
+  border-color: #1db954;
+  transform: scale(1.1);
 }
 
 .dark {
@@ -61,11 +60,9 @@
   color: white;
 }
 
-
 @media only screen and (max-width: 600px) {
   .opener {
     font-size: 50px;
     margin-top: 30%;
   }
 }
-

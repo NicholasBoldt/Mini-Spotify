@@ -1,7 +1,6 @@
 .dashboard {
   width: 80%;
   margin: 0 auto;
-
 }
 
 .options {
@@ -46,7 +45,7 @@
     margin: 5px 0;
   }
 
-  .options_bottom > div{
+  .options_bottom > div {
     margin: 5px 0;
   }
 
@@ -62,7 +61,6 @@
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
   .dashboard {
     width: 100%;
-
   }
 
   .description {
@@ -72,7 +70,5 @@
   .edit_button {
     width: 200px;
     text-align: right;
-    
   }
-
 }

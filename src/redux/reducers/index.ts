@@ -1,13 +1,13 @@
-import { combineReducers } from 'redux'
-import playlists, { playlistState } from './playlists'
-import ui, { uiState } from './ui'
+import { combineReducers } from "redux";
+import playlists, { playlistState } from "./playlists";
+import ui, { uiState } from "./ui";
 
 export default combineReducers({
   playlists,
-  ui
-})
+  ui,
+});
 
 export type rootState = {
-    ui: uiState,
-    playlists: playlistState
-}
+  ui: uiState;
+  playlists: playlistState;
+};

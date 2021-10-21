@@ -1,14 +1,17 @@
-import axios, {AxiosResponse} from 'axios';
+import axios, { AxiosResponse } from "axios";
 
 export const getPlaylists = async (token: string) => {
-    const response: AxiosResponse<any[]> = await axios.get('https://api.spotify.com/v1/me/playlists', {
-    headers: {
-      'Authorization': 'Bearer ' + token
-    }})
-    const data: any = response.data;
-    return data.items;
-  }
-
+  const response: AxiosResponse<any[]> = await axios.get(
+    "https://api.spotify.com/v1/me/playlists",
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+  const data: any = response.data;
+  return data.items;
+};
 
 export const getPlaylist = async (token: string, id: string) => {
   const response: AxiosResponse<any[]> = await axios.get(
@@ -24,7 +27,7 @@ export const getPlaylist = async (token: string, id: string) => {
 };
 
 export const getUser = async (token: string) => {
-  const response: AxiosResponse<any[]>  = await axios.get(
+  const response: AxiosResponse<any[]> = await axios.get(
     "https://api.spotify.com/v1/me",
     {
       headers: {
@@ -36,10 +39,14 @@ export const getUser = async (token: string) => {
   return data;
 };
 
-export const createPlaylist = async (token: string, userId: string, newPlaylist: any) => {
-  const response: AxiosResponse<any[]>  = await axios.post(
+export const createPlaylist = async (
+  token: string,
+  userId: string,
+  newPlaylist: any
+) => {
+  const response: AxiosResponse<any[]> = await axios.post(
     `https://api.spotify.com/v1/users/${userId}/playlists`,
-    newPlaylist, 
+    newPlaylist,
     {
       headers: {
         Authorization: "Bearer " + token,
@@ -50,10 +57,14 @@ export const createPlaylist = async (token: string, userId: string, newPlaylist:
   return data;
 };
 
-export const editPlaylist = async (token: string, id: string, editedPlaylist: any) => {
-  const response: AxiosResponse<any[]>  = await axios.put(
+export const editPlaylist = async (
+  token: string,
+  id: string,
+  editedPlaylist: any
+) => {
+  const response: AxiosResponse<any[]> = await axios.put(
     `https://api.spotify.com/v1/playlists/` + id,
-    editedPlaylist, 
+    editedPlaylist,
     {
       headers: {
         Authorization: "Bearer " + token,
@@ -66,63 +77,63 @@ export const editPlaylist = async (token: string, id: string, editedPlaylist: an
 
 export const searchTracks = async (token: string, trackSearch: string) => {
   try {
-    const url: string = "https://api.spotify.com/v1/search?q=" + trackSearch + "&type=track&market=US&limit=10"
-    const response: AxiosResponse<any[]>  = await axios.get(
-      url,
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
-    );
+    const url: string =
+      "https://api.spotify.com/v1/search?q=" +
+      trackSearch +
+      "&type=track&market=US&limit=10";
+    const response: AxiosResponse<any[]> = await axios.get(url, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
     const data: any = response.data;
     return data;
   } catch (error) {
-      console.log(error)
+    console.log(error);
   }
- 
 };
 
-
-export const addTracks = async (token: string, playlistId: string, track: string) => {
+export const addTracks = async (
+  token: string,
+  playlistId: string,
+  track: string
+) => {
   try {
     const response: AxiosResponse<any[]> = await axios.post(
       `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
-      {"uris": [track]},
+      { uris: [track] },
       {
         headers: {
-          'Content-type': 'application/json',
+          "Content-type": "application/json",
           Authorization: "Bearer " + token,
         },
       }
     );
     const data = response.data;
     return data;
-  } catch(error) {
-    console.log(error)
+  } catch (error) {
+    console.log(error);
   }
-  
 };
 
-export const removeTracks = async (token: string, playlistId: string, track: string) => {
+export const removeTracks = async (
+  token: string,
+  playlistId: string,
+  track: string
+) => {
   const tracks = {
-    "tracks": [
+    tracks: [
       {
-        "uri": track
-      }
-    ]
-  }
+        uri: track,
+      },
+    ],
+  };
   await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
-    method:'DELETE',
+    method: "DELETE",
     headers: {
-      'Content-Type':'application/json',
-        Authorization: "Bearer " + token,
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
     },
-    body: JSON.stringify(tracks)
-    })
-
+    body: JSON.stringify(tracks),
+  });
 };
-
-
-
-

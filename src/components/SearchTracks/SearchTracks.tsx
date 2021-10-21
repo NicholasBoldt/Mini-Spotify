@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Card from "../UI/Card";
 import { searchTracks } from "../../utiles/spotifyAPI";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,7 +12,9 @@ const SearchTrack = () => {
   const dispatch = useDispatch();
   const [trackName, setTrackName] = useState("");
   const [results, setResults] = useState("");
-  const access_token = useSelector((state: rootState) => state.playlists.access_token);
+  const access_token = useSelector(
+    (state: rootState) => state.playlists.access_token
+  );
   const dark = useSelector((state: rootState) => state.ui.dark);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,8 +30,8 @@ const SearchTrack = () => {
   };
 
   const closeHandler = () => {
-    dispatch({ type: 'setClose' });
-  }
+    dispatch({ type: "setClose" });
+  };
 
   return (
     <div>
@@ -38,21 +40,30 @@ const SearchTrack = () => {
         <header className={classes.header}>
           <h2>Search for a Title</h2>
         </header>
-        <form onSubmit={submitHandler} className={!dark ? classes.content : `${classes.content} ${classes.dark}`}>
+        <form
+          onSubmit={submitHandler}
+          className={
+            !dark ? classes.content : `${classes.content} ${classes.dark}`
+          }
+        >
           <div className={classes.inputs}>
-            <input value={trackName} placeholder={'Search for a Track'} onChange={onChange}></input>
-            <Button className='search' type="submit">Search</Button>
-          </div>  
+            <input
+              value={trackName}
+              placeholder={"Search for a Track"}
+              onChange={onChange}
+            ></input>
+            <Button className="search" type="submit">
+              Search
+            </Button>
+          </div>
           <div className={classes.return}>
-            <Button className={'remove'}onClick={closeHandler}>Go Back</Button>
+            <Button className={"remove"} onClick={closeHandler}>
+              Go Back
+            </Button>
           </div>
         </form>
         <div className={classes.results}>
-        {results && (
-          <SearchList
-            results={results}
-          />
-        )}
+          {results && <SearchList results={results} />}
         </div>
       </Card>
     </div>

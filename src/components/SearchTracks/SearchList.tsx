@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 import Track from "../Tracks/Track";
 import classes from "./SearchList.module.css";
 
 type SearchListProps = {
-    results: any
-}
+  results: any;
+};
 
 const SearchList = (props: SearchListProps) => {
   return (

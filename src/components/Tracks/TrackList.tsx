@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Track from "./Track";
 import classes from "./TrackList.module.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -87,35 +87,53 @@ const TrackList = () => {
 
   return (
     <table className={classes.tracklist}>
-      <tr className={dark ? classes.dark : ''}>
+      <tr className={dark ? classes.dark : ""}>
         <th>
-          <Button className={!dark ? 'selector' : 'selector_dark'} onClick={onSortIndexHandler}>
+          <Button
+            className={!dark ? "selector" : "selector_dark"}
+            onClick={onSortIndexHandler}
+          >
             #
           </Button>
         </th>
         <th></th>
         <th align="left">
-          <Button className={!dark ? 'selector' : 'selector_dark'} onClick={onSortTitleHandler}>
+          <Button
+            className={!dark ? "selector" : "selector_dark"}
+            onClick={onSortTitleHandler}
+          >
             Title
           </Button>
         </th>
         <th>
-          <Button className={!dark ? 'selector' : 'selector_dark'} onClick={onSortAlbumHandler}>
+          <Button
+            className={!dark ? "selector" : "selector_dark"}
+            onClick={onSortAlbumHandler}
+          >
             Album
           </Button>
         </th>
         <th>
-          <Button className={!dark ? 'selector' : 'selector_dark'} onClick={onSortIndexHandler}>
+          <Button
+            className={!dark ? "selector" : "selector_dark"}
+            onClick={onSortIndexHandler}
+          >
             Added
           </Button>
         </th>
         <th>
-          <Button className={!dark ? 'selector' : 'selector_dark'} onClick={onSortReleaseHandler}>
+          <Button
+            className={!dark ? "selector" : "selector_dark"}
+            onClick={onSortReleaseHandler}
+          >
             Release
           </Button>
         </th>
         <th>
-          <Button className={!dark ? 'selector' : 'selector_dark'} onClick={onSortTimeHandler}>
+          <Button
+            className={!dark ? "selector" : "selector_dark"}
+            onClick={onSortTimeHandler}
+          >
             Time
           </Button>
         </th>

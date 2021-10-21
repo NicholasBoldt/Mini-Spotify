@@ -7,7 +7,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .tracklist {
-        font-size: 15px;
-    }
+  .tracklist {
+    font-size: 15px;
   }
+}
