@@ -1,8 +1,13 @@
-.selector { 
-    width: 250px;
+.selector {
+  width: 250px;
 }
 
 .dark {
-    /* background-color: #1f1f1f; */
-    color: black;
-  }
+  color: black;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .selector {
+      width: 200px;
+  };
+}

@@ -58,3 +58,21 @@
     overflow: scroll;
   }
 }
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .dashboard {
+    width: 100%;
+
+  }
+
+  .description {
+    width: 80%;
+  }
+
+  .edit_button {
+    width: 200px;
+    text-align: right;
+    
+  }
+
+}

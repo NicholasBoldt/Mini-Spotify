@@ -41,7 +41,9 @@ const Dashboard = () => {
         <div className={classes.options_bottom}>
           <PlaylistSelector />
           <div className={classes.description}>{current.description}</div>
-          <Button onClick={editHandler}>Edit Playlist</Button>
+          <div className={classes.edit_button}>
+            <Button onClick={editHandler}>Edit Playlist</Button>
+          </div>
         </div>
       </div>
       <div className={classes.tracklist}>
