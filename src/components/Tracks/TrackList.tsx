@@ -2,24 +2,12 @@ import Track from "./Track";
 import classes from "./TrackList.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "../UI/Button";
-import { useState } from "react";
-
-interface SelectorState {
-  tracks: any[];
-  current: any;
-  access_token: string;
-}
+import { rootState } from "../../redux/reducers";
 
 const TrackList = (props: any) => {
   const dispatch = useDispatch();
-  const current = useSelector((state: any) => state.playlists.current);
-  const access_token = useSelector(
-    (state: any) => state.playlists.access_token
-  );
-
-  const dark = useSelector((state: any) => state.ui.dark);
-
-  const tracks = useSelector((state: any) => state.playlists.tracks);
+  const dark = useSelector((state: rootState) => state.ui.dark);
+  const tracks = useSelector((state: rootState) => state.playlists.tracks);
 
   const onSortTitleHandler = () => {
     function sortTitle(a: any, b: any) {
@@ -33,7 +21,6 @@ const TrackList = (props: any) => {
     }
     const sortedTracks = [...tracks];
     sortedTracks.sort(sortTitle);
-    console.log(tracks);
     dispatch({ type: "setTracks", payload: sortedTracks });
   };
 
@@ -49,7 +36,6 @@ const TrackList = (props: any) => {
     }
     const sortedTracks = [...tracks];
     sortedTracks.sort(sortAlbum);
-    console.log(tracks);
     dispatch({ type: "setTracks", payload: sortedTracks });
   };
 
@@ -65,7 +51,6 @@ const TrackList = (props: any) => {
     }
     const sortedTracks = [...tracks];
     sortedTracks.sort(sortIndex);
-    console.log(tracks);
     dispatch({ type: "setTracks", payload: sortedTracks });
   };
 
@@ -81,7 +66,6 @@ const TrackList = (props: any) => {
     }
     const sortedTracks = [...tracks];
     sortedTracks.sort(sortRelease);
-    console.log(tracks);
     dispatch({ type: "setTracks", payload: sortedTracks });
   };
 
@@ -97,13 +81,12 @@ const TrackList = (props: any) => {
     }
     const sortedTracks = [...tracks];
     sortedTracks.sort(sortTime);
-    console.log(tracks);
     dispatch({ type: "setTracks", payload: sortedTracks });
   };
 
   return (
     <table className={classes.tracklist}>
-      <tr className={dark && classes.dark}>
+      <tr className={dark ? classes.dark : ''}>
         <th>
           <Button className={!dark ? 'selector' : 'selector_dark'} onClick={onSortIndexHandler}>
             #

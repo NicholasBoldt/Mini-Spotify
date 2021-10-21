@@ -5,6 +5,7 @@ import classes from './App.module.css';
 import {useDispatch, useSelector } from 'react-redux';
 import { BsFillMoonFill } from "react-icons/bs";
 import { BsFillSunFill } from "react-icons/bs";
+import { rootState } from './redux/reducers/index'
 
 const searchCode = (name: string, url = '') => {
   const results = new RegExp("[#&]" + name + "=([^&#]*)").exec(
@@ -20,7 +21,7 @@ const searchCode = (name: string, url = '') => {
 
 function App() {
   const dispatch = useDispatch();
-  const dark = useSelector((state: any) => state.ui.dark)
+  const dark = useSelector((state: rootState) => state.ui.dark)
 
   const authURL = getAuthURL();
   const responseURL = window.location.href

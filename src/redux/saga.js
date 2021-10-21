@@ -1,8 +1,6 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import { getPlaylists, getPlaylist, getUser, createPlaylist, editPlaylist, addTracks, removeTracks } from '../utiles/spotifyAPI';
 
-
-
 function* fetchData(action) {
     try {
        const playlists = yield call(getPlaylists, action.payload);
@@ -12,9 +10,7 @@ function* fetchData(action) {
        yield put({type: "setTracks", payload: current.tracks.items});
        const user = yield call(getUser, action.payload);
        yield put({type: "setUserId", payload: user.id});
-
     } catch (e) {
-       yield put({type: "getPlaylistsFailed", message: e.message});
     }
  }
 
@@ -26,7 +22,7 @@ function* fetchData(action) {
       yield put({type: "setTracks", payload: current.tracks.items});
 
    } catch (e) {
-      yield put({type: "getPlaylistsFailed", message: e.message});
+   
    }
 }
 
@@ -39,7 +35,7 @@ function* fetchCreatePlaylist(action) {
       yield put({type: "setCurrent", payload: current});
       yield put({type: "setTracks", payload: current.tracks.items});
    } catch (e) {
-      yield put({type: "getPlaylistsFailed", message: e.message});
+
    }
 }
 
@@ -52,7 +48,7 @@ function* fetchEditPlaylist(action) {
       yield put({type: "setCurrent", payload: current});
       yield put({type: "setTracks", payload: current.tracks.items});
    } catch (e) {
-      yield put({type: "getPlaylistsFailed", message: e.message});
+
    }
 }
 
@@ -63,7 +59,7 @@ function* fetchAddTrack(action) {
       yield put({type: "setCurrent", payload: current});
       yield put({type: "setTracks", payload: current.tracks.items});
    } catch (e) {
-      yield put({type: "getPlaylistsFailed", message: e.message});
+      
    }
 }
 
@@ -74,7 +70,7 @@ function* fetchRemoveTrack(action) {
       yield put({type: "setCurrent", payload: current});
       yield put({type: "setTracks", payload: current.tracks.items});
    } catch (e) {
-      yield put({type: "getPlaylistsFailed", message: e.message});
+
    }
 }
 

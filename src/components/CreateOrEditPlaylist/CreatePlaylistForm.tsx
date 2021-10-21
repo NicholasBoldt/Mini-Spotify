@@ -4,19 +4,20 @@ import Button from "../UI/Button";
 import { useState } from "react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { rootState } from "../../redux/reducers";
 
 const CreatePlaylistForm = (props: any) => {
   const dispatch = useDispatch();
 
-  const userId = useSelector((state: any) => state.playlists.userId);
+  const userId = useSelector((state: rootState) => state.playlists.userId);
   const access_token = useSelector(
-    (state: any) => state.playlists.access_token
+    (state: rootState) => state.playlists.access_token
   );
-  const dark = useSelector((state: any) => state.ui.dark);
+  const dark = useSelector((state: rootState) => state.ui.dark);
 
   const [playlistName, setPlaylistName] = useState("");
   const [playlistDescription, setPlaylistDescription] = useState("");
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const onNameChange = (event: any) => {
     setPlaylistName(event.target.value);
@@ -29,25 +30,22 @@ const CreatePlaylistForm = (props: any) => {
   const submitHandler = (event: any) => {
     event.preventDefault();
     if (playlistName.trim().length === 0) {
-      setError('Playlist name must not be empty!')
+      setError("Playlist name must not be empty!");
       return;
-  }
-  if(playlistDescription.trim().length > 200) {
-      setError('Description must be less than 200 characters!');
+    }
+    if (playlistDescription.trim().length > 200) {
+      setError("Description must be less than 200 characters!");
       return;
-  }
-   
-      console.log("submitted", playlistName, playlistDescription);
-      const submitData = {
-        name: playlistName,
-        description: playlistDescription,
-        public: false,
-      };
-      const data = { access_token, userId, submitData };
+    }
+    const submitData = {
+      name: playlistName,
+      description: playlistDescription,
+      public: false,
+    };
+    const data = { access_token, userId, submitData };
 
-      dispatch({ type: "CREATE_FETCH_REQUESTED", payload: data });
-      dispatch({ type: "setClose" });
-  
+    dispatch({ type: "CREATE_FETCH_REQUESTED", payload: data });
+    dispatch({ type: "setClose" });
   };
 
   const closeHandler = () => {
@@ -65,7 +63,8 @@ const CreatePlaylistForm = (props: any) => {
           className={
             !dark ? classes.content : `${classes.content} ${classes.dark}`
           }
-          onSubmit={submitHandler}>
+          onSubmit={submitHandler}
+        >
           <div className={classes.inputs}>
             <div>
               <label>Playlist Name:</label>
@@ -78,8 +77,10 @@ const CreatePlaylistForm = (props: any) => {
           </div>
           <p className={classes.error}>{error}</p>
           <div className={classes.actions}>
-            <Button className="remove" onClick={closeHandler} >Go Back</Button>
-            <Button type="submit" >Submit</Button>
+            <Button className="remove" onClick={closeHandler}>
+              Go Back
+            </Button>
+            <Button type="submit">Submit</Button>
           </div>
         </form>
       </Card>

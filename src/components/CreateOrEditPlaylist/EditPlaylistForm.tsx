@@ -4,16 +4,16 @@ import Button from "../UI/Button";
 import { useState } from "react";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { rootState } from "../../redux/reducers";
 
 const EditPlaylistForm = (props: any) => {
   const dispatch = useDispatch();
 
-  const current = useSelector((state: any) => state.playlists.current);
+  const current = useSelector((state: rootState) => state.playlists.current);
   const access_token = useSelector(
-    (state: any) => state.playlists.access_token
+    (state: rootState) => state.playlists.access_token
   );
-
-  const dark = useSelector((state: any) => state.ui.dark);
+  const dark = useSelector((state: rootState) => state.ui.dark);
 
   const [playlistName, setPlaylistName] = useState(current.name);
   const [playlistDescription, setPlaylistDescription] = useState(

@@ -1,8 +1,13 @@
 import { combineReducers } from 'redux'
-import playlists from './playlists'
-import ui from './ui'
+import playlists, { playlistState } from './playlists'
+import ui, { uiState } from './ui'
 
 export default combineReducers({
   playlists,
   ui
 })
+
+export type rootState = {
+    ui: uiState,
+    playlists: playlistState
+}

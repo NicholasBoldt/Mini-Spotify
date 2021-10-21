@@ -5,15 +5,14 @@ import SearchList from "./SearchList";
 import classes from "./SearchTracks.module.css";
 import Button from "../UI/Button";
 import { useState } from "react";
+import { rootState } from "../../redux/reducers";
 
 const SearchTrack = (props: any) => {
   const dispatch = useDispatch();
   const [trackName, setTrackName] = useState("");
   const [results, setResults] = useState("");
-  const access_token = useSelector((state: any) => state.playlists.access_token);
-  const dark = useSelector((state: any) => state.ui.dark);
-
-  console.log(access_token);
+  const access_token = useSelector((state: rootState) => state.playlists.access_token);
+  const dark = useSelector((state: rootState) => state.ui.dark);
 
   const onChange = (event: any) => {
     setTrackName(event.target.value);
@@ -22,10 +21,7 @@ const SearchTrack = (props: any) => {
   const submitHandler = async (event: any) => {
     event.preventDefault();
     if (trackName.trim().length !== 0) {
-      console.log("submitted");
-      console.log(trackName);
       const searchData = await searchTracks(access_token, trackName);
-      console.log(searchData);
       setResults(searchData);
     }
   };

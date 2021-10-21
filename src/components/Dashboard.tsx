@@ -7,14 +7,15 @@ import EditPlaylistForm from "./CreateOrEditPlaylist/EditPlaylistForm";
 import Button from "./UI/Button";
 import React from "react";
 import SearchTrack from "./SearchTracks/SearchTracks";
+import { rootState } from "../redux/reducers";
 
 const Dashboard = (props: any) => {
   const dispatch = useDispatch();
-  const current = useSelector((state: any) => state.playlists.current);
-  const create = useSelector((state: any) => state.ui.create);
-  const edit = useSelector((state: any) => state.ui.edit);
-  const search = useSelector((state: any) => state.ui.search);
-  const dark = useSelector((state: any) => state.ui.dark);
+  const current = useSelector((state: rootState) => state.playlists.current);
+  const create = useSelector((state: rootState) => state.ui.create);
+  const edit = useSelector((state: rootState) => state.ui.edit);
+  const search = useSelector((state: rootState) => state.ui.search);
+  const dark = useSelector((state: rootState) => state.ui.dark);
 
   const createHandler = () => {
     dispatch({ type: "setCreate" });
