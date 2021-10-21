@@ -46,11 +46,13 @@ const SearchTrack = () => {
           <Button className={'remove'}onClick={closeHandler}>Go Back</Button>
           </div>
         </form>
+        <div className={classes.results}>
         {results && (
           <SearchList
             results={results}
           />
         )}
+        </div>
       </Card>
     </div>
   );

@@ -14,7 +14,7 @@ const initialState: playlistState = {
   userId: "",
 };
 
-const playlistReducer: any = (state = initialState, action: any) => {
+const playlistReducer = (state = initialState, action: any) => {
   if (action.type === "setPlaylists") {
     return {
       ...state,
