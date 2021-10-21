@@ -19,34 +19,34 @@ const EditPlaylistForm = () => {
   const [playlistDescription, setPlaylistDescription] = useState(
     current.description
   );
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
-  const onNameChange = (event: any) => {
+  const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPlaylistName(event.target.value);
   };
 
-  const onDescriptionChange = (event: any) => {
+  const onDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPlaylistDescription(event.target.value);
   };
 
   const submitHandler = (event: any) => {
     event.preventDefault();
     if (playlistName.trim().length === 0) {
-        setError('Playlist name must not be empty!')
-        return;
+      setError("Playlist name must not be empty!");
+      return;
     }
-    if(playlistDescription.trim().length > 200) {
-        setError('Description must be less than 200 characters!');
-        return;
+    if (playlistDescription.trim().length > 200) {
+      setError("Description must be less than 200 characters!");
+      return;
     }
-      const submitData = {
-        name: playlistName,
-        description: playlistDescription,
-        public: false,
-      };
-      const data = { access_token, id: current.id, submitData };
-      dispatch({ type: "EDIT_FETCH_REQUESTED", payload: data });
-      dispatch({ type: "setClose" });
+    const submitData = {
+      name: playlistName,
+      description: playlistDescription,
+      public: false,
+    };
+    const data = { access_token, id: current.id, submitData };
+    dispatch({ type: "EDIT_FETCH_REQUESTED", payload: data });
+    dispatch({ type: "setClose" });
   };
 
   const closeHandler = () => {
@@ -73,13 +73,18 @@ const EditPlaylistForm = () => {
             </div>
             <div>
               <label>Playlist Description:</label>
-              <input value={playlistDescription} onChange={onDescriptionChange}></input>
+              <input
+                value={playlistDescription}
+                onChange={onDescriptionChange}
+              ></input>
             </div>
           </div>
           <p className={classes.error}>{error}</p>
           <div className={classes.actions}>
-            <Button className="remove" onClick={closeHandler}>Go Back</Button>
-            <Button type="submit" >Submit</Button>
+            <Button className="remove" onClick={closeHandler}>
+              Go Back
+            </Button>
+            <Button type="submit">Submit</Button>
           </div>
         </form>
       </Card>

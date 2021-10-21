@@ -19,11 +19,11 @@ const CreatePlaylistForm = () => {
   const [playlistDescription, setPlaylistDescription] = useState("");
   const [error, setError] = useState("");
 
-  const onNameChange = (event: any) => {
+  const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPlaylistName(event.target.value);
   };
 
-  const onDescriptionChange = (event: any) => {
+  const onDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPlaylistDescription(event.target.value);
   };
 

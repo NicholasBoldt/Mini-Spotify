@@ -14,7 +14,7 @@ const SearchTrack = () => {
   const access_token = useSelector((state: rootState) => state.playlists.access_token);
   const dark = useSelector((state: rootState) => state.ui.dark);
 
-  const onChange = (event: any) => {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTrackName(event.target.value);
   };
 

@@ -15,7 +15,6 @@ const Dashboard = () => {
   const create = useSelector((state: rootState) => state.ui.create);
   const edit = useSelector((state: rootState) => state.ui.edit);
   const search = useSelector((state: rootState) => state.ui.search);
-  const dark = useSelector((state: rootState) => state.ui.dark);
 
   const createHandler = () => {
     dispatch({ type: "setCreate" });
