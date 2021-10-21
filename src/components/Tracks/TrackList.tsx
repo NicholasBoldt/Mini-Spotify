@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Button from "../UI/Button";
 import { rootState } from "../../redux/reducers";
 
-const TrackList = (props: any) => {
+const TrackList = () => {
   const dispatch = useDispatch();
   const dark = useSelector((state: rootState) => state.ui.dark);
   const tracks = useSelector((state: rootState) => state.playlists.tracks);

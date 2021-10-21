@@ -9,7 +9,7 @@ import React from "react";
 import SearchTrack from "./SearchTracks/SearchTracks";
 import { rootState } from "../redux/reducers";
 
-const Dashboard = (props: any) => {
+const Dashboard = () => {
   const dispatch = useDispatch();
   const current = useSelector((state: rootState) => state.playlists.current);
   const create = useSelector((state: rootState) => state.ui.create);

@@ -6,7 +6,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { rootState } from "../../redux/reducers";
 
-const EditPlaylistForm = (props: any) => {
+const EditPlaylistForm = () => {
   const dispatch = useDispatch();
 
   const current = useSelector((state: rootState) => state.playlists.current);

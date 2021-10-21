@@ -6,7 +6,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { rootState } from "../../redux/reducers";
 
-const CreatePlaylistForm = (props: any) => {
+const CreatePlaylistForm = () => {
   const dispatch = useDispatch();
 
   const userId = useSelector((state: rootState) => state.playlists.userId);

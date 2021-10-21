@@ -3,7 +3,7 @@ import Button from "../UI/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { rootState } from "../../redux/reducers";
 
-interface Track {
+type Track = {
     name: string;
     album: any;
     artists: any[];

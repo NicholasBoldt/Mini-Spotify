@@ -2,7 +2,11 @@ import Track from "../Tracks/Track";
 import classes from "./SearchList.module.css";
 import Button from "../UI/Button";
 
-const SearchList = (props: any) => {
+type SearchListProps = {
+    results: any
+}
+
+const SearchList = (props: SearchListProps) => {
   return (
     <table className={classes.tracklist}>
       {props.results &&

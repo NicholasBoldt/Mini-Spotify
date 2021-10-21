@@ -7,7 +7,7 @@ import Button from "../UI/Button";
 import { useState } from "react";
 import { rootState } from "../../redux/reducers";
 
-const SearchTrack = (props: any) => {
+const SearchTrack = () => {
   const dispatch = useDispatch();
   const [trackName, setTrackName] = useState("");
   const [results, setResults] = useState("");
