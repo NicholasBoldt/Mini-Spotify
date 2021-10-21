@@ -62,3 +62,10 @@
 }
 
 
+@media only screen and (max-width: 600px) {
+  .opener {
+    font-size: 50px;
+    margin-top: 30%;
+  }
+}
+

@@ -10,7 +10,14 @@
   padding: 15px;
 }
 
-.options > div {
+.options_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.options_bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,6 +33,28 @@
   color: white;
 }
 
-@media only screen and (min-width: 320px) {
-  
+@media only screen and (max-width: 600px) {
+  .dashboard {
+    width: 100%;
+  }
+
+  .options_bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+  }
+
+  .options_bottom > div{
+    margin: 5px 0;
+  }
+
+  .description {
+    width: 100%;
+  }
+
+  .tracklist {
+    overflow: scroll;
+  }
 }

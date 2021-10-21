@@ -21,3 +21,14 @@
 .title {
     font-weight: bold;
 }
+
+@media only screen and (max-width: 600px) {
+    .cover {
+        width: 50px;
+    }
+
+    .track {
+        font-size: 12px;
+    }
+  }
+  

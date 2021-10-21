@@ -43,7 +43,7 @@ const SearchTrack = () => {
             <Button className='search' type="submit">Search</Button>
           </div>  
           <div className={classes.return}>
-          <Button className={'remove'}onClick={closeHandler}>Go Back</Button>
+            <Button className={'remove'}onClick={closeHandler}>Go Back</Button>
           </div>
         </form>
         <div className={classes.results}>

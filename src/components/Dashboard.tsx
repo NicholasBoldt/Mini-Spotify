@@ -34,17 +34,19 @@ const Dashboard = () => {
       {edit && <EditPlaylistForm />}
       {search && <SearchTrack />}
       <div className={classes.options}>
-        <div>
+        <div className={classes.options_top}>
           <Button onClick={searchHandler}>Search for Tracks</Button>
           <Button onClick={createHandler}>Create Playlist</Button>
         </div>
-        <div>
+        <div className={classes.options_bottom}>
           <PlaylistSelector />
           <div className={classes.description}>{current.description}</div>
           <Button onClick={editHandler}>Edit Playlist</Button>
         </div>
       </div>
-      <TrackList />
+      <div className={classes.tracklist}>
+        <TrackList />
+      </div>
     </div>
   );
 };

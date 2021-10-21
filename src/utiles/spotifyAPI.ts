@@ -19,7 +19,7 @@ export const getPlaylist = async (token: string, id: string) => {
       },
     }
   );
-  const data: any = response.data;
+  const data = response.data;
   return data;
 };
 
@@ -32,7 +32,7 @@ export const getUser = async (token: string) => {
       },
     }
   );
-  const data: any = response.data;
+  const data = response.data;
   return data;
 };
 
@@ -46,7 +46,7 @@ export const createPlaylist = async (token: string, userId: string, newPlaylist:
       },
     }
   );
-  const data: any = response.data;
+  const data = response.data;
   return data;
 };
 
@@ -60,7 +60,7 @@ export const editPlaylist = async (token: string, id: string, editedPlaylist: an
       },
     }
   );
-  const data: any = response.data;
+  const data = response.data;
   return data;
 };
 
@@ -96,7 +96,7 @@ export const addTracks = async (token: string, playlistId: string, track: string
         },
       }
     );
-    const data: any = response.data;
+    const data = response.data;
     return data;
   } catch(error) {
     console.log(error)
