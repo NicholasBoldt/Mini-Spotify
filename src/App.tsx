@@ -32,7 +32,7 @@ function App() {
     if(access_token) {
       dispatch({type:'PLAYLISTS_FETCH_REQUESTED', payload: access_token})
     }
-  }, [])
+  }, [dispatch, access_token])
 
   const darkHandler = () => {
     dispatch({ type: "setDark" });

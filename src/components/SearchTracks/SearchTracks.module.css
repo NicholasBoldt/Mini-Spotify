@@ -11,8 +11,8 @@
 .modal {
   position: fixed;
   top: 15vh;
-  left: 10%;
-  width: 80%;
+  left: 25%;
+  width: 50%;
   z-index: 100;
   overflow: scroll;
   max-height: 500px;

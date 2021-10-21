@@ -1,3 +1,4 @@
+import React from 'react'
 import Card from "../UI/Card";
 import { searchTracks } from "../../utiles/spotifyAPI";
 import { useSelector, useDispatch } from "react-redux";

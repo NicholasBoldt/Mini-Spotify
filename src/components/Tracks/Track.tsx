@@ -1,9 +1,10 @@
+import React from 'react'
 import classes from "./Track.module.css";
 import Button from "../UI/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { rootState } from "../../redux/reducers";
 
-type Track = {
+type TrackProps = {
     name: string;
     album: any;
     artists: any[];
@@ -15,7 +16,7 @@ type Track = {
     search: boolean;
 }
 
-const Track = (props: Track) => {
+const Track = (props: TrackProps) => {
     const dispatch = useDispatch();
     const access_token = useSelector((state: rootState) => state.playlists.access_token);
     const current = useSelector((state: rootState) => state.playlists.current);
@@ -40,7 +41,7 @@ const Track = (props: Track) => {
                 <img
                     className={classes.cover}
                     src={props.album.images[0].url}
-                    alt="Cover Photo"
+                    alt="Cover"
                 />
             </td>
             <td align="left">

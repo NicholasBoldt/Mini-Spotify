@@ -1,6 +1,6 @@
+import React from 'react'
 import Track from "../Tracks/Track";
 import classes from "./SearchList.module.css";
-import Button from "../UI/Button";
 
 type SearchListProps = {
     results: any
