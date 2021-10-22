@@ -9,6 +9,9 @@ A web app that consumes the Spotify API and allows users to add, update, and edi
 - Dark Mode
 
 # Screenshots
+[Screenshot](https://github.com/NicholasBoldt/Mini-Spotify/blob/main/public/assets/PlaylistView.png)
+[Screenshot](https://github.com/NicholasBoldt/Mini-Spotify/blob/main/public/assets/SearchView.png)
+[Screenshot](https://github.com/NicholasBoldt/Mini-Spotify/blob/main/public/assets/DarkView.png)
 
 # Technologies Used
 - Typescript
