@@ -1,14 +1,18 @@
 import React from "react";
 import Track from "../Tracks/Track";
 import classes from "./SearchList.module.css";
+import { useSelector } from "react-redux";
+import { rootState } from "../../redux/reducers";
 
 type SearchListProps = {
   results: any;
 };
 
 const SearchList = (props: SearchListProps) => {
+  const dark = useSelector((state: rootState) => state.ui.dark);
+
   return (
-    <table className={classes.tracklist}>
+    <table className={!dark ? classes.tracklist : `${classes.tracklist} ${classes.dark}`}>
       {props.results &&
         props.results.tracks.items.map((track: any, index: any) => (
           <Track

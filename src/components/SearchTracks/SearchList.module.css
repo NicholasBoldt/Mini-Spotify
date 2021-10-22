@@ -4,3 +4,7 @@
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+.dark {
+    background-color: #1f1f1f;
+}

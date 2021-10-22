@@ -62,7 +62,7 @@ const SearchTrack = () => {
             </Button>
           </div>
         </form>
-        <div className={classes.results}>
+        <div className={ !dark ? classes.results : `${classes.results} ${classes.results}`}>
           {results && <SearchList results={results} />}
         </div>
       </Card>
