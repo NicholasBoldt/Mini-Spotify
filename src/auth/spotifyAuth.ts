@@ -9,7 +9,7 @@ dotenv.config({ path: ".env" });
 
 // Spotify Auth
 const authURL = "https://accounts.spotify.com/authorize";
-const redirectURL = "https://mini-spotify-app.herokuapp.com/"; 
+const redirectURL = "http://localhost:3000"; 
 const scopes = ["playlist-read-private", "playlist-modify-private", "user-read-recently-played"];
 
 // export type SpotifyToken = {
