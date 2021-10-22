@@ -38,7 +38,7 @@ const Track = (props: TrackProps) => {
 
   return (
     <tr className={!dark ? classes.track : `${classes.track} ${classes.dark}`}>
-      <td>{props.index}</td>
+      <td className={classes.index}>{props.index+1}</td>
       <td>
         <img
           className={classes.cover}

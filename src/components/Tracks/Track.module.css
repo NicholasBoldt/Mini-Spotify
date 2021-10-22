@@ -8,6 +8,10 @@
   border-color: grey;
 }
 
+.index {
+    padding: 1em;
+}
+
 .cover {
   height: 70px;
   width: 70px;
