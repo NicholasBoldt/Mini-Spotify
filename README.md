@@ -1,6 +1,8 @@
 # Mini Spotify
 A web app that consumes the Spotify API and allows users to add, update, and edit playlists. Build from scratch using Typescript, React, and Redux. 
 
+Try it: https://mini-spotify-app.herokuapp.com/
+
 # Features
 - View all of your playlists from spotify and switch between them
 - Create a new playlist with an optional description
@@ -18,7 +20,4 @@ A web app that consumes the Spotify API and allows users to add, update, and edi
 - React
 - Redux
 - Redux-Sagas
-
-# Planned
-- Create a full spotify clone
 
