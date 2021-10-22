@@ -8,7 +8,7 @@ import { BsFillSunFill } from "react-icons/bs";
 import { rootState } from "./redux/reducers/index";
 
 const searchCode = (name: string, url = "") => {
-  const results = new RegExp("[#&]" + name + "=([^&#]*)").exec(
+  const results = new RegExp("[?&]" + name + "=([^&#]*)").exec(
     url || window.location.href
   );
 
