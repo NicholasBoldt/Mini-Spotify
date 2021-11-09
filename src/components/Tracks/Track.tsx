@@ -3,6 +3,7 @@ import classes from "./Track.module.css";
 import Button from "../UI/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { rootState } from "../../redux/reducers";
+import millisToMinutesAndSeconds from "../../utiles/millisToMinutesAndSeconds";
 
 type TrackProps = {
   name: string;
@@ -68,11 +69,5 @@ const Track = (props: TrackProps) => {
     </tr>
   );
 };
-
-function millisToMinutesAndSeconds(millis: number) {
-  var minutes: number = Math.floor(millis / 60000);
-  var seconds: any = ((millis % 60000) / 1000).toFixed(0);
-  return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-}
 
 export default Track;

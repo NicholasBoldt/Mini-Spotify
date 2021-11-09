@@ -6,18 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BsFillMoonFill } from "react-icons/bs";
 import { BsFillSunFill } from "react-icons/bs";
 import { rootState } from "./redux/reducers/index";
-
-const searchCode = (name: string, url = "") => {
-  const results = new RegExp("[#&]" + name + "=([^&#]*)").exec(
-    url || window.location.href
-  );
-
-  if (results == null) {
-    return null;
-  } else {
-    return results[1];
-  }
-};
+import searchURL from "./utiles/searchURL";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +14,7 @@ function App() {
 
   const authURL = getAuthURL();
   const responseURL = window.location.href;
-  const access_token = searchCode("access_token", responseURL);
+  const access_token = searchURL("access_token", responseURL);
   dispatch({ type: "setAccessToken", payload: access_token });
 
   useEffect(() => {
